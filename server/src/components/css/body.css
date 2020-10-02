@@ -1,0 +1,47 @@
+body{
+    background-image: url("img.jpg");
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    
+}
+.choice{
+    position: absolute;
+    transform: translate(-50%,50%);
+    width:40%;
+    height: 50%;
+    left: 50%;
+    background-color: white;
+
+}
+.student{
+    position: absolute;
+    padding-left:20%;
+    padding-right: 20%;
+    padding-top: 3%;
+    font-size: 30px;
+    color: black;
+    text-decoration: none;
+}
+.teacher{
+    position: absolute;
+    margin-left: 50%;
+    padding-top: 3%;
+    font-size: 30px;
+    padding-left: 18%;
+    padding-right: 16.45%;
+    text-decoration: none;
+    
+}
+.login{
+    position: absolute;
+    top:50%;
+    left:30%;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 10px;
+    background-color: navy;
+    color: white;
+}
