@@ -7,4 +7,4 @@ passport.use(new GoogleStrategy({
     callbackURL: "/auth/google/callback"
 },(accessToken,refreshToken,profile,done)=>{
     console.log(profile);
-}))
+}));
