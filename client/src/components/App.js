@@ -3,8 +3,15 @@ import {Route,BrowserRouter} from "react-router-dom";
 import Header from "./Header";
 import Body from "./body";
 import login from "./login";
-import css from "./css/login.css"
+import css from "./css/login.css";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 class App extends Component{
+    componentDidMount() {
+        this.props.fetchUser();
+
+    }
+   
     render(){
         return(
             <div className="container">
@@ -13,11 +20,12 @@ class App extends Component{
                     
                     <Route exact path='/' component={Body}/>
                     <Route exact path='/login' style={css} component={login}/>
-                  
-                </BrowserRouter>
+                    
+                                    </BrowserRouter>
 
             </div>
         );
     }
 }
-export default App;
+
+  export default connect(null,actions)(App);

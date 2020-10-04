@@ -1,6 +1,6 @@
 module.exports={
-    clientID: "816997721508-ajn52s3cjj3kn04t3qlodt6ii56i3uoi.apps.googleusercontent.com",
-    clientSecret: "LL1EPMAi7yfddZIFDeXjzW3t",
+    clientID: "679163885433-8pfhh5g8f2vh2lp7ebosgpp3dmhrjkpv.apps.googleusercontent.com",
+    clientSecret: "EDm2guYfZyJ5Z5z1P8ea9v1n",
     callbackURL: "/auth/google/callback",
     cookiekey: "pp"
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import * as actions from "../actions";
 function App() {
   return (
     <div className="App">
@@ -22,5 +22,8 @@ function App() {
     </div>
   );
 }
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+export default connect(mapStateToProps)(App);
 
-export default App;

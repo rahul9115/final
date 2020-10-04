@@ -2,7 +2,7 @@ import React,{Component} from "react";
 import {Route,BrowserRouter} from "react-router-dom";
 import css from "./css/body.css"
 import Header1 from "./css/Header.css";
-
+import {connect} from "react-redux";
 import image from "./images/log.png";
 class Body extends Component{
     
@@ -25,6 +25,7 @@ class Body extends Component{
         style1:{backgroundColor:"white",color:"black"}});
     }
     render(){
+        console.log(this.props)
         return(
             
             <div className="container" id="con" >
@@ -47,4 +48,8 @@ class Body extends Component{
         )
     }
 }
-export default Body;
+function mapStateToProps({auth}){
+    return { auth };
+}
+
+export default connect( mapStateToProps)(Body);
