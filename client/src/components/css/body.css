@@ -33,7 +33,7 @@
     margin-left: 50%;
     padding-top: 3%;
     font-size: 30px;
-    padding-left: 18%;
+    padding-left: 16.4%;
     padding-right: 18%;
     text-decoration: none;
     
@@ -47,4 +47,8 @@
     padding: 10px;
     background-color: navy;
     color: white;
+}
+.teah{
+    color: white;
+    text-decoration: none;
 }

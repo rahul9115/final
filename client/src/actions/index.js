@@ -3,10 +3,17 @@ import FETCH_USER from "./type";
 export function fetchUser() {
 
     return function (dispatch) {
-        console.log("yo");
+       console.log("yoooo");
         axios.get('/api/output').then(res => dispatch({ type: FETCH_USER, payload: res.data }))
     }
 
+};
+export function handleToken(token) {
+    console.log(token);
+    return function (dispatch) {
+        axios.post("/api/state", token).then(res => dispatch({ type: FETCH_USER, payload: res.data }))
+
+    }
 };
 
 

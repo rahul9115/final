@@ -1,13 +1,20 @@
 const passport = require('passport');
-
+var a="";
 module.exports = (app) => {
 
     app.get('/auth/google', passport.authenticate('google', {
         scope: ['email', 'profile']
     }));
+    app.post("/api/state",(req,res)=>{
+        console.log("This",req.body.profile);
+        a=req.body.profile;
+    })
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
-        console.log("Hello");
-       res.redirect("/login");
+       if (a=="teacher")
+        res.redirect("/login");
+       else
+       res.redirect("/");
+        
     }
         
     );
@@ -25,5 +32,6 @@ module.exports = (app) => {
 
 
     });
+    
 
 }

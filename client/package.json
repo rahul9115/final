@@ -9,7 +9,10 @@
     "/api/logout": {
       "target": "http://localhost:5000/"
     },
-    "/api/*": {
+    "/api/state": {
+      "target": "http://localhost:5000/"
+    },
+    "/api/output": {
       "target": "http://localhost:5000/"
     }
   },
