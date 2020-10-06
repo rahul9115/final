@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 import {Route,BrowserRouter} from "react-router-dom";
-import Header from "./Header";
+import instructions from "./instructions";
 import Body from "./body";
 import login from "./login";
 import css from "./css/login.css";

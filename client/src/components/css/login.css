@@ -1,15 +1,23 @@
-.container1{
-    background-image: none;
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap');
+body{
+    background-image: url("download.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    
 }
-.navig{
+.navig1{
     position: absolute;
     top:0;
     left:0;
     margin: 0;
     width:100%;
     height:20%;
-    
+     
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+
 
 }
 ul{
@@ -54,3 +62,102 @@ li .l2{
     font-size: 30px;
     
 }
+
+h1{
+    font-family: 'Sansita Swashed', cursive;
+}
+#che{
+    background-image: url("download.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.check{
+    position: absolute;
+    top: 15%;
+    transform: translate(-50%,50%);
+    width: 25%;
+    height: 50%;
+    left:20%;
+    border:1px solid white;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+}
+
+.check1{
+    position: absolute;
+    top: 15%;
+    transform: translate(-50%,50%);
+    width: 25%;
+    height: 50%;
+    left:47.5%;
+    border:1px solid white;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+
+}
+.check2{
+    position: absolute;
+    top: 15%;
+    transform: translate(-50%,50%);
+    width: 25%;
+    height: 50%;
+    left:75%;
+    border:1px solid white;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+
+}
+.dash .h{
+    position: absolute;
+    top:20%;
+    left: 7%;
+}
+.a1{
+    position: absolute;
+    top:40%;
+    left:30%;
+    padding :20px;
+    border: 1px solid black;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    text-decoration: none;
+}
+.a1:hover{
+    background-color: white;
+    color:black
+}
+.a2{
+    position: absolute;
+    top:40%;
+    left:22%;
+    padding :20px;
+    border: 1px solid black;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    text-decoration: none;
+}
+.a2:hover{
+    background-color: white;
+    color:black
+}
+.a3{
+    position: absolute;
+    top:40%;
+    left:30%;
+    padding :20px;
+    border: 1px solid black;
+    font-size: 20px;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    text-decoration: none;
+
+}
+.a3:hover{
+    background-color: white;
+    color:black
+}
+
