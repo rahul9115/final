@@ -6,6 +6,7 @@ import login from "./login";
 import css from "./css/login.css";
 import { connect } from "react-redux";
 import * as actions from "../actions";
+import exam from "./exam";
 class App extends Component{
     componentDidMount() {
         this.props.fetchUser();
@@ -20,6 +21,7 @@ class App extends Component{
                     
                     <Route exact path='/' component={Body}/>
                     <Route exact path='/login' style={css} component={login}/>
+                    <Route exact path='/exam' style={css} component={exam}/>
                     
                                     </BrowserRouter>
 

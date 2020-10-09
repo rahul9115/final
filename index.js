@@ -8,6 +8,9 @@ const passportConfig = require('./services/passport');
 const authroutes=require("./authroutes/authenticate");
 const cookieSession = require("cookie-session");
 var cors = require('cors');
+const mongoose=require("mongoose");
+mongoose.connect("mongodb+srv://rahul:rahul@cluster0.rpfjy.mongodb.net/<dbname>?retryWrites=true&w=majority");
+require('./models/User');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
@@ -20,7 +23,7 @@ app.use(function (req, res, next) {
 app.use(cors());
 app.use(
     cookieSession({
-        maxAge: 1000,
+        maxAge: 1000*60*60,
         keys: [key.cookiekey]
 
     })
