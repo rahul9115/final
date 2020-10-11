@@ -18,7 +18,7 @@ class Body extends Component{
     }
     
     updateStudent=()=>{
-        this.setState({element:<a href=""><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
+        this.setState({element:<a href="" className="teah"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
         style:{backgroundColor:"white",color:"black"},
         style1:{backgroundColor:"navy",color:"white"},
         profile:"student"});

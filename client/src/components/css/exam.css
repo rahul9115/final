@@ -191,7 +191,7 @@ li .l2{
 .final{
     position: absolute;
     top:200%;
-    left:52%;
+    left:50%;
     transform: translate(-50%,50%);
     margin-bottom: 10%;
    
@@ -206,5 +206,6 @@ li .l2{
     padding-top: 1%;
     padding-bottom: 1%;
     margin: 0;
+    width: 100%;
     
 }

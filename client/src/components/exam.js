@@ -27,6 +27,7 @@ class exam extends Component{
                         
                     </ul>
                     </nav>
+                    <form action="/">
                     <div className="create">
                         <h1 className="ch">Create New Exam</h1>
                         <input type="text" placeholder="Enter the exam name" className="i1"></input>
@@ -42,9 +43,9 @@ class exam extends Component{
 
                     </div>
                     <div className="final">
-                            <button className="b6">Create Exam</button>
+                            <button type="submit" className="b6">Create Exam</button>
                     </div>
-                  
+                  </form>
                 </div>
                 
                 
