@@ -18,7 +18,7 @@ class exam extends Component{
                     
                 
                     <div className="container2">
-                    <nav class="navig1">
+                    <nav class="navig2">
                     <ul>
                         <li><a href="http://localhost:3000"><img src={image}></img></a></li>
                         <li ><a href="http://localhost:3000" class="l1">Home</a></li>
@@ -28,8 +28,21 @@ class exam extends Component{
                     </ul>
                     </nav>
                     <div className="create">
-                        <h1>Create New Exam</h1>
+                        <h1 className="ch">Create New Exam</h1>
                         <input type="text" placeholder="Enter the exam name" className="i1"></input>
+                    </div>
+                    <div className="exam">
+                        <h1 className="ch1">Exam Questions</h1>
+                        <input type="radio" className="b1" name="question"></input>
+                        <label className="l11">ADD PDF</label>
+                        <input type="radio" className="b2" name="question"></input>
+                        <label className="l21">Write Exam Questions</label>
+                        <input type="radio" className="b3" name="question"></input>
+                        <label className="l31">Multiple Choice Questions</label>
+
+                    </div>
+                    <div className="final">
+                            <button className="b6">Create Exam</button>
                     </div>
                   
                 </div>
