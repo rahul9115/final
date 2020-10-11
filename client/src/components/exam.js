@@ -17,7 +17,7 @@ class exam extends Component{
                 return [
                     
                 
-                    <div className="container2" id="frag2">
+                    <div className="container2">
                     <nav class="navig1">
                     <ul>
                         <li><a href="http://localhost:3000"><img src={image}></img></a></li>
@@ -27,6 +27,10 @@ class exam extends Component{
                         
                     </ul>
                     </nav>
+                    <div className="create">
+                        <h1>Create New Exam</h1>
+                        <input type="text" placeholder="Enter the exam name" className="i1"></input>
+                    </div>
                   
                 </div>
                 
@@ -42,7 +46,7 @@ class exam extends Component{
     render(){
         console.log(this.props.auth);
         return(
-            <div className="container">
+            <div className="container6" id="frag2" >
             {this.renderContent()} 
             </div>
         );

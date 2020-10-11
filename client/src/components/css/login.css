@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@500&display=swap');
-body{
+#frag3{
+    
     background-image: url("download.jpg");
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top:0;
+    margin: 0;
+    width:100%;
+    height: 1000px;
     
     
 }
@@ -64,7 +71,11 @@ li .l2{
 }
 
 h1{
+    
     font-family: 'Sansita Swashed', cursive;
+}
+.h{
+    top:20%;
 }
 #che{
     background-image: url("download.jpg");
@@ -75,7 +86,7 @@ h1{
 }
 .check{
     position: absolute;
-    top: 15%;
+    top: 10%;
     transform: translate(-50%,50%);
     width: 25%;
     height: 50%;
@@ -86,7 +97,7 @@ h1{
 
 .check1{
     position: absolute;
-    top: 15%;
+    top: 10%;
     transform: translate(-50%,50%);
     width: 25%;
     height: 50%;
@@ -97,7 +108,7 @@ h1{
 }
 .check2{
     position: absolute;
-    top: 15%;
+    top: 10%;
     transform: translate(-50%,50%);
     width: 25%;
     height: 50%;

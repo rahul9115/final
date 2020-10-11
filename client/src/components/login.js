@@ -17,7 +17,7 @@ class login extends Component{
                 return [
                     
                 
-                    <div className="container1" id="frag1">
+                  <div >
                     <nav class="navig1">
                     <ul>
                         <li><a href="http://localhost:3000"><img src={image}></img></a></li>
@@ -44,7 +44,7 @@ class login extends Component{
                         <a class="a3" href="#">Analyse Results</a>
                     </div>
                     </div>
-                </div>
+                    </div>
                 
                 
               
@@ -58,9 +58,11 @@ class login extends Component{
     render(){
         console.log(this.props.auth);
         return(
-            <div className="container">
+           <body className="con">
+           <div className="container5" id="frag3">
             {this.renderContent()} 
             </div>
+            </body>
         );
     }
 }
