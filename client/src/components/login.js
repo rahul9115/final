@@ -58,11 +58,11 @@ class login extends Component{
     render(){
         console.log(this.props.auth);
         return(
-           <body className="con">
+           
            <div className="container5" id="frag3">
             {this.renderContent()} 
             </div>
-            </body>
+            
         );
     }
 }

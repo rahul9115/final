@@ -17,9 +17,12 @@
     }
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^23.0.0",
+    "@ckeditor/ckeditor5-react": "^2.1.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "@tinymce/tinymce-react": "^3.7.0",
     "axios": "^0.20.0",
     "font-awesome": "^4.7.0",
     "react": "^16.13.1",
@@ -28,9 +31,11 @@
     "react-helmet": "^6.1.0",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
+    "react-rte": "^0.16.3",
     "react-scripts": "^1.1.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "suneditor-react": "^2.14.3"
   },
   "scripts": {
     "start": "react-scripts start",
