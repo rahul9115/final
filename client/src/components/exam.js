@@ -32,11 +32,34 @@ class exam extends Component{
             
         
     }
+    show2=()=>{
+        this.setState({element:<div className="modal-content"><a class="close1" href="#" onClick={this.delete2}>&times;</a> <br></br>
+        <h1>Enter the choices</h1>
+        <CKEditor editor={ClassicEditor}  onChange={(event,editor)=>{
+            const data=editor.getData();
+        }}
+            ></CKEditor>
+            <h1>Enter the answer</h1>
+            <CKEditor editor={ClassicEditor}  onChange={(event,editor)=>{
+            const data=editor.getData();
+        }}
+            ></CKEditor>
+            <a className="ok">Ok</a>
+            </div>,style:{display:'block'}})
+            
+        
+    }
     delete=()=>{
         this.setState({element:null,style:{display:'none'}});
     }
     delete1=()=>{
         this.show()
+    }
+    pdf=()=>{
+        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf"></input></div>,style:{display:'block'}})
+    }
+    delete2=()=>{
+        this.pdf()
     }
     renderContent() {
         console.log(this.style)
@@ -66,7 +89,7 @@ class exam extends Component{
                     </div>
                     <div className="exam" >
                         <h1 className="ch1">Exam Questions</h1>
-                        <input  type="radio" className="b1" value="Exam Questions" name="question"></input>
+                        <input onClick={this.pdf} type="radio" className="b1" value="Exam Questions" name="question"></input>
                         <label className="l11">ADD PDF</label>
                         <input type="radio" className="b2" value="ADD PDF" name="question"></input>
                         <label className="l21">Write Exam Questions</label>

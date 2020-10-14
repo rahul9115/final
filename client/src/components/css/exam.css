@@ -277,7 +277,22 @@ li .l2{
   }  
 .ques{
     position: absolute;
-    margin-left: 15%;
+    margin-left: 10%;
+    margin-top: 15%;
+    padding: 10px;
+    padding-left: 30%;
+    border: 1px solid black;
+    background-color: navy;
+    color: white;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    
+    width: 40%;
+    border-radius: 20px;
+   
+}
+.options{
+    position: absolute;
+    margin-left: 10%;
     margin-top: 15%;
     padding: 10px;
     padding-left: 30%;
@@ -289,4 +304,34 @@ li .l2{
     width: 40%;
     border-radius: 20px;
    
+}
+.pdf{
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 8%;
+    padding: 10px;
+    padding-left: 30%;
+    border: 1px solid black;
+    background-color: navy;
+    color: white;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    border-radius: ;
+    width: 40%;
+    border-radius: 20px;
+
+}
+.ok{
+    position: absolute;
+    padding-left:60px;
+    padding-right:60px;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-top: 5%;
+    margin-left: 40%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    border-radius: 30px;
+    background-color: navy;
+    color: white;
+    margin-bottom: 10px;
+
 }
