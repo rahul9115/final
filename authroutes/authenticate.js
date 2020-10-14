@@ -32,6 +32,10 @@ module.exports = (app) => {
 
 
     });
-    
+    app.post('/api/stack',(req,res)=>{
+        var answers=req.body;
+        console.log("hola",answers);
+        res.send(answers)
+    })
 
 }

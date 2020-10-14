@@ -14,6 +14,9 @@
     },
     "/api/output": {
       "target": "http://localhost:5000/"
+    },
+    "/api/stack": {
+      "target": "http://localhost:5000/"
     }
   },
   "dependencies": {
@@ -25,6 +28,7 @@
     "@tinymce/tinymce-react": "^3.7.0",
     "axios": "^0.20.0",
     "font-awesome": "^4.7.0",
+    "html-react-parser": "^0.14.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-google-forms": "^1.0.3",

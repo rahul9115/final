@@ -1,4 +1,5 @@
-import React,{Component, Fragment} from "react";
+import React,{Component} from "react";
+import {useState} from "react";
 import {Route,BrowserRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import css from "./css/exam.css";
@@ -7,46 +8,69 @@ import Body from "./body";
 import RGF from 'react-google-forms';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import CKEditor from '@ckeditor/ckeditor5-react';
+import parse from "html-react-parser";
+
+import axios from "axios";
 
 class exam extends Component{
+    
     constructor(props){
         super(props);
         this.state={
             element:null,
            
-            style:{display:'none'}
+            style:{display:'none'},
+            data:'<p>React is really <em>nice</em>!</p>'
             
             
         }
+        
+        
     }
+    
     show=()=>{
         this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="ques" onClick={this.show1}>+ Add question</a></div>,style:{display:'block'}
         })
     }  
     show1=()=>{
         this.setState({element:<div className="modal-content"><a class="close1" href="#" onClick={this.delete1}>&times;</a> <br></br>
-        <CKEditor editor={ClassicEditor}  onChange={(event,editor)=>{
-            const data=editor.getData();
-        }}
+        <CKEditor editor={ClassicEditor}  
             ></CKEditor></div>,style:{display:'block'}})
             
         
     }
     show2=()=>{
         this.setState({element:<div className="modal-content"><a class="close1" href="#" onClick={this.delete2}>&times;</a> <br></br>
+        <form onSubmit={this.onsubmit} action={this.pdf}>
         <h1>Enter the choices</h1>
-        <CKEditor editor={ClassicEditor}  onChange={(event,editor)=>{
+
+        <CKEditor editor={ClassicEditor} value="options"  onChange={(event,editor)=>{
             const data=editor.getData();
         }}
             ></CKEditor>
             <h1>Enter the answer</h1>
-            <CKEditor editor={ClassicEditor}  onChange={(event,editor)=>{
-            const data=editor.getData();
-        }}
+            <CKEditor editor={ClassicEditor} value={this.state.data} onChange={(evt,editor) =>{
+                const data=editor.getData()
+                this.onsubmit(data)
+            } }
             ></CKEditor>
-            <a className="ok">Ok</a>
-            </div>,style:{display:'block'}})
             
+            <button type="submit" className="ok">Ok</button>
+            </form></div>,style:{display:'block'}})
+            
+        
+    }
+  
+    onsubmit =(data) =>{
+       
+
+       console.log("form submitted", data);
+
+       
+        axios.post('http://localhost:5000/api/stack', parse(data))
+            .then(response => console.log(response.data))
+            .catch(() => console.log('Error creating new course'))
+
         
     }
     delete=()=>{
@@ -56,7 +80,7 @@ class exam extends Component{
         this.show()
     }
     pdf=()=>{
-        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf"></input></div>,style:{display:'block'}})
+        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf" required></input></div>,style:{display:'block'}})
     }
     delete2=()=>{
         this.pdf()
@@ -82,7 +106,7 @@ class exam extends Component{
                         
                     </ul>
                     </nav>
-                    <form action="/">
+                    <form action="/api/stack">
                     <div className="create">
                         <h1 className="ch">Create New Exam</h1>
                         <input type="text" placeholder="Enter the exam name" className="i1"></input>
