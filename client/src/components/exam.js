@@ -19,9 +19,13 @@ class exam extends Component{
             
         }
     }
-      
-    show(event){
-        this.setState({element:<div className="modal-content"><CKEditor editor={ClassicEditor}  onChange={(event,editor)=>{
+    show=()=>{
+        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="ques" onClick={this.show1}>+ Add question</a></div>,style:{display:'block'}
+        })
+    }  
+    show1=()=>{
+        this.setState({element:<div className="modal-content"><a class="close1" href="#" onClick={this.delete1}>&times;</a> <br></br>
+        <CKEditor editor={ClassicEditor}  onChange={(event,editor)=>{
             const data=editor.getData();
         }}
             ></CKEditor></div>,style:{display:'block'}})
@@ -30,6 +34,9 @@ class exam extends Component{
     }
     delete=()=>{
         this.setState({element:null,style:{display:'none'}});
+    }
+    delete1=()=>{
+        this.show()
     }
     renderContent() {
         console.log(this.style)
@@ -57,14 +64,14 @@ class exam extends Component{
                         <h1 className="ch">Create New Exam</h1>
                         <input type="text" placeholder="Enter the exam name" className="i1"></input>
                     </div>
-                    <div className="exam" onChange={this.show.bind(this)}>
+                    <div className="exam" >
                         <h1 className="ch1">Exam Questions</h1>
-                        <input type="radio" className="b1" value="Exam Questions" name="question"></input>
+                        <input  type="radio" className="b1" value="Exam Questions" name="question"></input>
                         <label className="l11">ADD PDF</label>
                         <input type="radio" className="b2" value="ADD PDF" name="question"></input>
                         <label className="l21">Write Exam Questions</label>
-                        <input type="radio" className="b3" value="Write Exam Questions" name="question"></input>
-                        <label className="l31">Multiple Choice Questions</label>
+                        <input onClick={this.show} type="radio" className="b3" value="Write Exam Questions" name="question"></input>
+                        <label  className="l31">Multiple Choice Questions</label>
                     
                     </div>
                     <div className="final">
@@ -73,7 +80,7 @@ class exam extends Component{
                   </form>
                   
                   <div className="modal" style={this.state.style}>
-                  <a class="close" href="#" onClick={this.delete}>&times;</a><br></br>
+                 
                       {this.state.element}</div>
                   
                 </div>
