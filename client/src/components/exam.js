@@ -20,14 +20,16 @@ class exam extends Component{
             element:null,
            
             style:{display:'none'},
-            data:'<p>React is really <em>nice</em>!</p>'
+            data:'<p>React is really <em>nice</em>!</p>',
+            data1:'<p>React is really <em>nice</em>!</p>',
+            input:""
             
             
         }
         
         
     }
-    
+   
     show=()=>{
         this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="ques" onClick={this.show1}>+ Add question</a></div>,style:{display:'block'}
         })
@@ -41,26 +43,40 @@ class exam extends Component{
     }
     show2=()=>{
         this.setState({element:<div className="modal-content"><a class="close1" href="#" onClick={this.delete2}>&times;</a> <br></br>
-        <form onSubmit={this.onsubmit} action={this.pdf}>
+        
         <h1>Enter the choices</h1>
 
-        <CKEditor editor={ClassicEditor} value="options"  onChange={(event,editor)=>{
+        <CKEditor editor={ClassicEditor} value={this.state.data1}  onChange={(event,editor)=>{
             const data=editor.getData();
+            this.onsubmit1(data);
+
         }}
             ></CKEditor>
             <h1>Enter the answer</h1>
             <CKEditor editor={ClassicEditor} value={this.state.data} onChange={(evt,editor) =>{
                 const data=editor.getData()
+                console.log(typeof(data))
                 this.onsubmit(data)
             } }
             ></CKEditor>
             
-            <button type="submit" className="ok">Ok</button>
-            </form></div>,style:{display:'block'}})
+            <button onClick={this.pdf} className="ok">Ok</button>
+            </div>,style:{display:'block'}})
             
         
     }
-  
+    onsubmit1=(data) =>{
+       
+
+        console.log("form submitted", data);
+ 
+        
+         axios.post('http://localhost:5000/api/stack1', parse(data))
+             .then(response => console.log(response.data))
+             .catch(() => console.log('Error creating new course'))
+ 
+         
+     }
     onsubmit =(data) =>{
        
 
@@ -80,11 +96,36 @@ class exam extends Component{
         this.show()
     }
     pdf=()=>{
-        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf" required></input></div>,style:{display:'block'}})
+        this.setState({element:<div className="modal-content"><form action={this.delete}><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf" required  onChange={evt => this.updateInputValue(evt)}></input> <button onClick="submit" className="ok1">Ok</button></form></div>,style:{display:'block'}})
     }
     delete2=()=>{
         this.pdf()
     }
+    updateInputValue=(evt)=> {
+        
+        this.setState({
+          input: evt.target.files[0]
+        });
+        const formData = new FormData(); 
+        formData.append( 
+            "myFile", 
+            evt.target.files[0],
+           evt.target.files.name
+          
+          ); 
+          console.log( evt.target.files[0]);
+        axios.post('http://localhost:5000/api/submit', formData)
+        .then(response => console.log(response))
+        .catch(() => console.log('Error creating new course'))
+    }        
+    
+   
+    
+        
+
+    
+
+      
     renderContent() {
         console.log(this.style)
         switch (this.props.auth) {
@@ -106,7 +147,7 @@ class exam extends Component{
                         
                     </ul>
                     </nav>
-                    <form action="/api/stack">
+                    <form action="/api/submit1" method="POST">
                     <div className="create">
                         <h1 className="ch">Create New Exam</h1>
                         <input type="text" placeholder="Enter the exam name" className="i1"></input>

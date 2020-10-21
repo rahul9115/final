@@ -12,6 +12,7 @@ const mongoose=require("mongoose");
 mongoose.connect("mongodb+srv://rahul:rahul@cluster0.rpfjy.mongodb.net/<dbname>?retryWrites=true&w=majority");
 require('./models/User');
 
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));

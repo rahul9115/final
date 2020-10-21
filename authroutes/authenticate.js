@@ -1,5 +1,14 @@
 const passport = require('passport');
 var a="";
+const fileupload=require('express-fileupload');
+const fs=require('fs');
+
+require('../models/file')
+const mongoose=require('mongoose');
+const { Binary } = require('mongodb');
+const File=mongoose.model('files');
+
+
 module.exports = (app) => {
 
     app.get('/auth/google', passport.authenticate('google', {
@@ -23,7 +32,7 @@ module.exports = (app) => {
         app.get("/api/output",(req,res)=>{
             res.send("");
         })
-        res.redirect("http://localhost:3000/");
+        res.redirect("/");
     });
     app.get('/api/output', (req, res) => {
 
@@ -34,8 +43,22 @@ module.exports = (app) => {
     });
     app.post('/api/stack',(req,res)=>{
         var answers=req.body;
-        console.log("hola",answers);
+        console.log("hola",answers.props.children);
         res.send(answers)
     })
+    app.post('/api/stack1',(req,res)=>{
+        var answers=req.body;
+        console.log("hola",answers[1].props);
+        res.send(answers)
+    })
+   
+    var b='';
+    app.post('/api/submit',(req,res)=>{
+        b=req.body
+        console.log("sjhs",b);
+       
+        
 
+})
 }
+

@@ -17,6 +17,12 @@
     },
     "/api/stack": {
       "target": "http://localhost:5000/"
+    },
+    "/api/submit":{
+      "target":"http://localhost:5000/"
+    },
+    "/api/submit1":{
+      "target":"http://localhost:5000/"
     }
   },
   "dependencies": {
