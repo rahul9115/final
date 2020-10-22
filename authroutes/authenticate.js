@@ -63,10 +63,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.post('/api/submit',(req,res)=>{
         
         
-        console.log("wola",req.files);
-       
+        console.log("wola",req.files.file);
+        const file=req.files.file;
+        file.mv(`${__dirname}/uploads/${file.name}`,err=>{
+            if(err){
+                console.log(err);   
+                return res.status(500).send(err);
+            }
+            res.json({fileName:file.name,filePath:`/uploads/${file.name}`})
+        })
         
 
+})
+app.get("/api/pdf",(req,res)=>{
+    res.send(Buffer.concat(b.file.data));
 })
 }
 
