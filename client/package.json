@@ -18,11 +18,11 @@
     "/api/stack": {
       "target": "http://localhost:5000/"
     },
-    "/api/submit":{
-      "target":"http://localhost:5000/"
+    "/api/submit": {
+      "target": "http://localhost:5000/"
     },
-    "/api/submit1":{
-      "target":"http://localhost:5000/"
+    "/api/submit1": {
+      "target": "http://localhost:5000/"
     }
   },
   "dependencies": {
@@ -39,6 +39,7 @@
     "react-dom": "^16.13.1",
     "react-google-forms": "^1.0.3",
     "react-helmet": "^6.1.0",
+    "react-hook-form": "^6.9.5",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-rte": "^0.16.3",

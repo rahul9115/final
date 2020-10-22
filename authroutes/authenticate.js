@@ -7,10 +7,17 @@ require('../models/file')
 const mongoose=require('mongoose');
 const { Binary } = require('mongodb');
 const File=mongoose.model('files');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 
 module.exports = (app) => {
-
+   app.use(fileupload());
+   app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }));
+   app.use(cors());
+   app.use(cookieParser());
     app.get('/auth/google', passport.authenticate('google', {
         scope: ['email', 'profile']
     }));
@@ -54,8 +61,9 @@ module.exports = (app) => {
    
     var b='';
     app.post('/api/submit',(req,res)=>{
-        b=req.body
-        console.log("sjhs",b);
+        
+        
+        console.log("wola",req.files);
        
         
 

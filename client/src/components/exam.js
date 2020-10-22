@@ -9,11 +9,11 @@ import RGF from 'react-google-forms';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import parse from "html-react-parser";
-
+import {useForm} from "react-hook-form";
 import axios from "axios";
 
 class exam extends Component{
-    
+        
     constructor(props){
         super(props);
         this.state={
@@ -22,7 +22,7 @@ class exam extends Component{
             style:{display:'none'},
             data:'<p>React is really <em>nice</em>!</p>',
             data1:'<p>React is really <em>nice</em>!</p>',
-            input:""
+            input:null
             
             
         }
@@ -96,7 +96,7 @@ class exam extends Component{
         this.show()
     }
     pdf=()=>{
-        this.setState({element:<div className="modal-content"><form action={this.delete}><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf" required  onChange={evt => this.updateInputValue(evt)}></input> <button onClick="submit" className="ok1">Ok</button></form></div>,style:{display:'block'}})
+        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf" required  onChange={evt => this.updateInputValue(evt)}></input> <button onClick={this.onFileChange} className="ok1">Ok</button></div>,style:{display:'block'}})
     }
     delete2=()=>{
         this.pdf()
@@ -106,18 +106,20 @@ class exam extends Component{
         this.setState({
           input: evt.target.files[0]
         });
-        const formData = new FormData(); 
-        formData.append( 
-            "myFile", 
-            evt.target.files[0],
-           evt.target.files.name
+        
+    } 
+    
+    onFileChange=()=>{
+      
+        
+        const formData = new FormData();
+        formData.append('file', this.state.input);
           
-          ); 
-          console.log( evt.target.files[0]);
-        axios.post('http://localhost:5000/api/submit', formData)
+        axios({url:'http://localhost:5000/api/submit', method:"POST",headers:{authorization:"your token"},data:formData})
         .then(response => console.log(response))
         .catch(() => console.log('Error creating new course'))
-    }        
+
+    }       
     
    
     
@@ -187,6 +189,7 @@ class exam extends Component{
         return(
             <div className="container6" id="frag2" >
             {this.renderContent()} 
+           
             </div>
         );
     }
