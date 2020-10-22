@@ -10,7 +10,7 @@ const File=mongoose.model('files');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
+var customId=require("custom-id");
 
 module.exports = (app) => {
    app.use(fileupload());
@@ -65,13 +65,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
         
         console.log("wola",req.files.file);
         const file=req.files.file;
-        file.mv(`${__dirname}/uploads/${file.name}`,err=>{
-            if(err){
-                console.log(err);   
-                return res.status(500).send(err);
+        var id=customId(file);
+        console.log(id);
+        File.findOne({name:file.name,files:file}).then((existingUser)=>{
+            if(existingUser){
+                console.log("Already present");
+             
+            }else{
+              console.log({name:file.name,files:file});
+              new File({name:file.name,files:file}).save();
             }
-            res.json({fileName:file.name,filePath:`/uploads/${file.name}`})
-        })
+      
+          })
+          File.findById({name:file.name,files:file}).then((user)=>{
+             console.log(user);
+          })
+        
         
 
 })
