@@ -60,13 +60,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
     })
    
     var b='';
+    var file1="";
     app.post('/api/submit',(req,res)=>{
         
         
         console.log("wola",req.files.file);
         const file=req.files.file;
         var id=customId(file);
-        console.log(id);
+        console.log("file",file);
         File.findOne({name:file.name,files:file}).then((existingUser)=>{
             if(existingUser){
                 console.log("Already present");
@@ -77,15 +78,28 @@ app.use(bodyParser.urlencoded({ extended: true }));
             }
       
           })
-          File.findById({name:file.name,files:file}).then((user)=>{
-             console.log(user);
+          
+          File.findOne({name:file.name,files:file}).then((user)=>{
+             console.log("wohoooo",user);
+             
+             
           })
-        
+          file.mv(`C:/Users/sudha/Downloads/exam4/client/public/uploads/${file.name}`,err=>{
+            if(err){
+                console.log(err);
+                return res.status(500).send(err);
+            }
+        });
+      b=file.name
         
 
 })
-app.get("/api/pdf",(req,res)=>{
-    res.send(Buffer.concat(b.file.data));
+app.get("/api/submit",(req,res)=>{
+    res.send(b);
 })
+
+
+    
+
 }
 

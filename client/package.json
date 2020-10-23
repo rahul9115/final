@@ -23,6 +23,9 @@
     },
     "/api/submit1": {
       "target": "http://localhost:5000/"
+    },
+    "/api/final": {
+      "target": "http://localhost:5000/"
     }
   },
   "dependencies": {
@@ -40,6 +43,7 @@
     "react-google-forms": "^1.0.3",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.9.5",
+    "react-pdf": "^5.0.0",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-rte": "^0.16.3",

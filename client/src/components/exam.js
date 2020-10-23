@@ -11,7 +11,7 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import parse from "html-react-parser";
 import {useForm} from "react-hook-form";
 import axios from "axios";
-
+var a="";
 class exam extends Component{
         
     constructor(props){
@@ -114,7 +114,7 @@ class exam extends Component{
         
         const formData = new FormData();
         formData.append('file', this.state.input);
-          
+          a=this.state.input;
         axios({url:'http://localhost:5000/api/submit', method:"POST",headers:{authorization:"your token"},data:formData})
         .then(response => console.log(response))
         .catch(() => console.log('Error creating new course'))
@@ -149,7 +149,7 @@ class exam extends Component{
                         
                     </ul>
                     </nav>
-                    <form action="/api/submit1" method="POST">
+                    <form action="/paper" >
                     <div className="create">
                         <h1 className="ch">Create New Exam</h1>
                         <input type="text" placeholder="Enter the exam name" className="i1"></input>
@@ -194,7 +194,11 @@ class exam extends Component{
         );
     }
 }
+
 function mapStateToProps({ auth }) {
     return { auth };
   }
 export default connect( mapStateToProps)(exam);
+export const file_name=()=> {
+    return a;
+}
