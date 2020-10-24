@@ -32,21 +32,16 @@ class paper extends Component{
                 return <Body />;
             default:
                 return [
+                 <div>   
+               
+                    <div id="mySidenav" class="sidenav">
                     
-                
-                  <div>
-                    <nav class="navig3">
-                    <ul>
-                        <li><a href="http://localhost:3000"><img src={image}></img></a></li>
-                        <li ><a href="http://localhost:3000" class="l1">Home</a></li>
-                        <li ><a href="/api/logout"class="l2">Logout</a></li>
-                    
-                        
-                    </ul>
-                    </nav>
-                    <div>
-                    
-                    <embed src={`/uploads/${str[0]}`} width="800px" height="2100px" />
+                    <a href="#">Begin Exam</a>
+                    <a href="#">Submit Exam</a>
+                  
+                    </div>
+                    <div className="pdf1">
+                    <embed src={`/uploads/${str[0]}`} width="1200px" height="600px" />
                   </div>
                    </div>
                 

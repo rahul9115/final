@@ -61,6 +61,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
    
     var b='';
     var file1="";
+    
     app.post('/api/submit',(req,res)=>{
         
         
@@ -79,22 +80,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
       
           })
           
-          File.findOne({name:file.name,files:file}).then((user)=>{
-             console.log("wohoooo",user);
-             
-             
-          })
+         
           file.mv(`C:/Users/sudha/Downloads/exam4/client/public/uploads/${file.name}`,err=>{
             if(err){
                 console.log(err);
                 return res.status(500).send(err);
             }
         });
-      b=file.name
+      file1=file;
+      
         
 
 })
 app.get("/api/submit",(req,res)=>{
+     b=file1.name;
     res.send(b);
 })
 
