@@ -308,7 +308,7 @@ li .l2{
 .pdf{
     position: absolute;
     margin-left: 10%;
-    margin-top: 8%;
+    margin-top: 10%;
     padding: 10px;
     padding-left: 30%;
     border: 1px solid black;
@@ -320,13 +320,30 @@ li .l2{
     border-radius: 20px;
 
 }
+.pdf2{
+    position: absolute;
+    margin-left: 10%;
+    margin-top: 20%;
+    padding: 10px;
+    padding-left: 30%;
+    border: 1px solid black;
+    background-color: navy;
+    color: white;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+    border-radius: ;
+    width: 40%;
+    border-radius: 20px; 
+}
+.pdf2::placeholder{
+    color: white;
+}
 .ok{
     position: absolute;
     padding-left:60px;
     padding-right:60px;
     padding-top:20px;
     padding-bottom:20px;
-    margin-top: 5%;
+    margin-top: 10%;
     margin-left: 40%;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
     border-radius: 30px;
@@ -341,7 +358,7 @@ li .l2{
     padding-right:60px;
     padding-top:20px;
     padding-bottom:20px;
-    margin-top: 25%;
+    margin-top: 27%;
     margin-left: 40%;
     box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
     border-radius: 30px;

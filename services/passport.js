@@ -22,11 +22,11 @@ passport.use(new GoogleStrategy({
   clientSecret: key.clientSecret,
   callbackURL: "/auth/google/callback"
 }, (accessToken, refreshToken, profile, done) => {
-    User.findOne({googleId:profile.id}).then((existingUser)=>{
+    User.findOne({googleId:profile.id,name:profile.name}).then((existingUser)=>{
       if(existingUser){
         done(null,existingUser)
       }else{
-        new User({googleId:profile.id}).save().then(user=>{done(null,user)});
+        new User({googleId:profile.id,name:profile.name}).save().then(user=>{done(null,user)});
       }
 
     })

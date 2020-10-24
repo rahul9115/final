@@ -26,6 +26,9 @@
     },
     "/api/final": {
       "target": "http://localhost:5000/"
+    },
+    "/api/submit2":{
+      "target": "http://localhost:5000/"
     }
   },
   "dependencies": {

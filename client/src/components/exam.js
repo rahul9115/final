@@ -22,7 +22,8 @@ class exam extends Component{
             style:{display:'none'},
             data:'<p>React is really <em>nice</em>!</p>',
             data1:'<p>React is really <em>nice</em>!</p>',
-            input:null
+            input:null,
+            input1:null
             
             
         }
@@ -96,7 +97,7 @@ class exam extends Component{
         this.show()
     }
     pdf=()=>{
-        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf" required  onChange={evt => this.updateInputValue(evt)}></input> <button onClick={this.onFileChange} className="ok1">Ok</button></div>,style:{display:'block'}})
+        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf" required  onChange={evt => this.updateInputValue(evt)}></input><input type="number" className="pdf2" placeholder="Enter the number questions" onChange={evt=>this.questions(evt)} required></input> <button onClick={this.onFileChange} className="ok1">Ok</button></div>,style:{display:'block'}})
     }
     delete2=()=>{
         this.pdf()
@@ -117,9 +118,17 @@ class exam extends Component{
           a=this.state.input;
         axios({url:'http://localhost:5000/api/submit', method:"POST",headers:{authorization:"your token"},data:formData})
         .then(response => console.log(response))
-        .catch(() => console.log('Error creating new course'))
+        .catch(() => console.log('Error creating new course'));
+        console.log("Questions",this.state.input1);
+        axios.post("/api/submit2",{questions:this.state.input1}).then(response=>console.log(response)).catch(()=>console.log('Error creating questions'))
 
-    }       
+    }   
+    questions=(evt)=>{
+        
+        this.setState({
+            input1: evt.target.value
+          });
+    }    
     
    
     

@@ -61,7 +61,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
    
     var b='';
     var file1="";
-    
+    app.post("/api/submit2",(req,res)=>{
+        var q=req.body;
+        console.log("No of questions",q.questions);
+    })
     app.post('/api/submit',(req,res)=>{
         
         
