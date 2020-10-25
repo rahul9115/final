@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rahul9115/exam4#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "concurrently": "^3.2.0",
     "cookie-parser": "^1.4.5",

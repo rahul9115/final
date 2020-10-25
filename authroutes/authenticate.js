@@ -11,7 +11,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 var customId=require("custom-id");
-
+var axios=require("axios");
 module.exports = (app) => {
    app.use(fileupload());
    app.use(bodyParser.json()); // for parsing application/json
@@ -41,9 +41,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
         })
         res.redirect("/");
     });
+    var info="";
     app.get('/api/output', (req, res) => {
 
-        console.log("in");
+        
+        info=req.user;
+        console.log(info.email[0].value);
         res.send(req.user);
 
 
@@ -63,7 +66,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
     var file1="";
     app.post("/api/submit2",(req,res)=>{
         var q=req.body;
-        console.log("No of questions",q.questions);
+        console.log("No of questions",q.
+        
+        
+        
+        
+        
+        
+        questions);
     })
     app.post('/api/submit',(req,res)=>{
         
@@ -72,17 +82,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
         const file=req.files.file;
         var id=customId(file);
         console.log("file",file);
-        File.findOne({name:file.name,files:file}).then((existingUser)=>{
+        File.findOne({_id:info.googleId}).then((existingUser)=>{
             if(existingUser){
-                console.log("Already present");
-             
-            }else{
-              console.log({name:file.name,files:file});
-              new File({name:file.name,files:file}).save();
+                console.log("in to delete");
+               File.deleteOne({_id:info.googleId}).then(()=>{
+                   console.log("data deleted");
+               });
+                
             }
-      
-          })
+                console.log("wolab",{googleId:info.googleId,email:info.email[0].value,name:file.name,files:file});
+                new File({_id:info.googleId,email:info.email[0].value,name:file.name,files:file}).save();
+            
+            
           
+        })
          
           file.mv(`C:/Users/sudha/Downloads/exam4/client/public/uploads/${file.name}`,err=>{
             if(err){
@@ -90,15 +103,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
                 return res.status(500).send(err);
             }
         });
-      file1=file;
+      
       
         
 
 })
-app.get("/api/submit",(req,res)=>{
-     b=file1.name;
-    res.send(b);
+app.get("/api/submit3",(req,res)=>{
+    console.log(info.googleId)
+    var name1="";
+    File.findOne({_id:info.googleId},(err,user)=>{
+        name1=user.name;
+        res.send(user.name);
+    })
+   
+    
+    
 })
+
 
 
     

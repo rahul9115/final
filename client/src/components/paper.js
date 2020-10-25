@@ -16,7 +16,7 @@ var a=[];
 class paper extends Component{
     call(){
         
-        axios.get("/api/submit").then(res=>{a.push(res.data)});
+        axios.get("/api/submit3").then(res=>{a.push(res.data)});
         return a;
         
          
