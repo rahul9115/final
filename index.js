@@ -24,7 +24,7 @@ app.use(function (req, res, next) {
 app.use(cors());
 app.use(
     cookieSession({
-        maxAge: 30*1000*60*60,
+        maxAge: 30*1000*60*60*1000,
         keys: [key.cookiekey]
 
     })

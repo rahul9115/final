@@ -74,6 +74,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         
         
         questions);
+        
     })
     app.post('/api/submit',(req,res)=>{
         
@@ -111,11 +112,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/api/submit3",(req,res)=>{
     console.log(info.googleId)
     var name1="";
+    if(info.googleId!=undefined){
     File.findOne({_id:info.googleId},(err,user)=>{
         name1=user.name;
         res.send(user.name);
     })
-   
+}
     
     
 })
