@@ -16,17 +16,30 @@ const options=[]
 var a=[];
 var i=3;
 var a1=[];
-
+var a2=[];
+var q=" ";
+var a3=[] ;
 class paper extends Component{
     call(){
         
-        axios.get("/api/submit3").then(res=>{a.push(res.data)});
-        return a;
+        axios.get("/api/submit3").then(res=>{
+            a.push(res.data) 
+            
+        });
         
+        return a;
          
        
     }
-    
+   
+    async call1(){
+        
+        const res=await axios.get("/api/questions");
+        a3.push(res.data.q);
+        console.log(a3)
+        return a3;
+      
+    }
     options(){
         
        
@@ -50,13 +63,20 @@ class paper extends Component{
         
     }
    option1(){
-    for (var i=0;i<5;i++)
-        a1[i]=this.options()
-    return a1;    
+  
+    
+   
+   
+   
+    for (var i=0;i<a3[0];i++)
+    a1[i]=this.options();
+    return a1;  
    }
     renderContent() {
        var str=this.call();
-       console.log(str);
+       var a2=this.call1();
+       console.log(a2[0],str[0])
+       
         switch (this.props.auth) {
             case null:
                 return <Body />;

@@ -59,13 +59,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.post('/api/stack1',(req,res)=>{
         var answers=req.body;
         console.log("hola",answers[1].props);
-        res.send(answers)
+        res.send(answers);
     })
    
     var b='';
     var file1="";
+    var q1="";
+    var q="";
     app.post("/api/submit2",(req,res)=>{
-        var q=req.body;
+        q=req.body;
+        
         console.log("No of questions",q.
         
         
@@ -92,7 +95,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
                 
             }
                 console.log("wolab",{googleId:info.googleId,email:info.email[0].value,name:file.name,files:file});
-                new File({_id:info.googleId,email:info.email[0].value,name:file.name,files:file}).save();
+                new File({_id:info.googleId,email:info.email[0].value,name:file.name,files:file,questions:q.questions}).save();
             
             
           
@@ -109,22 +112,33 @@ app.use(bodyParser.urlencoded({ extended: true }));
         
 
 })
+
 app.get("/api/submit3",(req,res)=>{
     console.log(info.googleId)
     var name1="";
     if(info.googleId!=undefined){
     File.findOne({_id:info.googleId},(err,user)=>{
         name1=user.name;
+        
         res.send(user.name);
     })
 }
-    
-    
 })
+app.get("/api/questions",(req,res)=>{
+    if(info.googleId!=undefined){
+        File.findOne({_id:info.googleId},(err,user)=>{
+          
+            
+            res.send({q:user.questions});
+        })
+
+    }
+    })
 
 
-
-    
 
 }
+    
+
+
 
