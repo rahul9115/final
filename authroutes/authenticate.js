@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
        if (a=="teacher")
         res.redirect("/login");
        else
-       res.redirect("/");
+       res.redirect("/paper");
         
     }
         
@@ -46,9 +46,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
         
         info=req.user;
-        console.log(info.email[0].value);
+        
         res.send(req.user);
-
+        
 
     });
     app.post('/api/stack',(req,res)=>{
@@ -94,9 +94,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
                });
                 
             }
+            if(info.googleId){
                 console.log("wolab",{googleId:info.googleId,email:info.email[0].value,name:file.name,files:file});
                 new File({_id:info.googleId,email:info.email[0].value,name:file.name,files:file,questions:q.questions}).save();
-            
+            }
             
           
         })

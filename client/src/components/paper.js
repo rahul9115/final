@@ -10,6 +10,7 @@ import file_name from "./exam";
 import exam from "./exam";
 import * as actions from "../actions";
 import axios from "axios";
+import fonts from '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 const elements=['A','B','C','D'];
 const options=[]
@@ -92,6 +93,7 @@ class paper extends Component{
                     
                     <a href="/api/submit3">Begin Exam</a>
                     <a href="#">Submit Exam</a>
+                    <a href="/api/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
                   
                     </div>
                     <div className="pdf1">

@@ -27,14 +27,14 @@
     "/api/final": {
       "target": "http://localhost:5000/"
     },
-    "/api/submit2":{
+    "/api/submit2": {
       "target": "http://localhost:5000/"
     },
-    "/api/submit3":{
+    "/api/submit3": {
       "target": "http://localhost:5000/"
     },
-    "/api/questions":{
-      "target":"http://localhost:5000/"
+    "/api/questions": {
+      "target": "http://localhost:5000/"
     }
   },
   "dependencies": {
