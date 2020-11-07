@@ -121,7 +121,7 @@ app.get("/api/submit3",(req,res)=>{
     File.findOne({_id:info.googleId},(err,user)=>{
         name1=user.name;
         
-        res.send(user.name);
+        res.send({user1:user.name,q:user.questions});
     })
 }
 })

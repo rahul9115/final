@@ -19,13 +19,14 @@ var i=3;
 var a1=[];
 var a2=[];
 var q=" ";
-var a3=[] ;
+var a3=[];
 var j=0;
 class paper extends Component{
     call(){
         
         axios.get("/api/submit3").then(res=>{
-            a.push(res.data) 
+            a.push(res.data.user1);
+            a3.push(res.data.q); 
             
         });
         
