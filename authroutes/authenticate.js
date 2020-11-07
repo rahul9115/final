@@ -53,7 +53,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     });
     app.post('/api/stack',(req,res)=>{
         var answers=req.body;
-        console.log("hola",answers.props.children);
+        
         res.send(answers)
     })
     app.post('/api/stack1',(req,res)=>{
@@ -113,28 +113,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
         
 
 })
-
+var googleId="";
+app.post("/api/submit3",(req,res)=>{
+    googleId=req.body.id;
+    console.log("This id",googleId);
+})
 app.get("/api/submit3",(req,res)=>{
-    console.log(info.googleId)
+    console.log(googleId)
     var name1="";
     if(info.googleId!=undefined){
-    File.findOne({_id:info.googleId},(err,user)=>{
+    File.findOne({_id:googleId},(err,user)=>{
+        if(user!=null){
         name1=user.name;
         
         res.send({user1:user.name,q:user.questions});
+        }else{
+            res.send("no data");
+        }
     })
 }
 })
-app.get("/api/questions",(req,res)=>{
-    if(info.googleId!=undefined){
-        File.findOne({_id:info.googleId},(err,user)=>{
-          
-            
-            res.send({q:user.questions});
-        })
 
-    }
-    })
 
 
 

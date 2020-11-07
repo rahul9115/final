@@ -22,6 +22,12 @@ var q=" ";
 var a3=[];
 var j=0;
 class paper extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            input:null
+        }
+    }
     call(){
         
         axios.get("/api/submit3").then(res=>{
@@ -75,6 +81,14 @@ class paper extends Component{
     a1[i]=this.options();
   return  a1;  
    }
+   id=(evt)=>{
+       this.setState({
+          input :evt.target.value
+       });
+       axios({url:'http://localhost:5000/api/submit3', method:"POST",headers:{authorization:"your token"},data:{id:evt.target.value}})
+       .then(response => console.log(response))
+   }
+
     renderContent() {
        var str=this.call();
        var a2=this.call1();
@@ -91,8 +105,9 @@ class paper extends Component{
                  <div>   
                
                     <div id="mySidenav" class="sidenav">
-                    
+                    <input placeholder="Enter the Id" onChange={evt=>this.id(evt)}></input>
                     <a href="/api/submit3">Begin Exam</a>
+                    
                     <a href="#">Submit Exam</a>
                     <a href="/api/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
                   
