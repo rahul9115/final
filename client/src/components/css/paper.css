@@ -46,7 +46,11 @@
   }
   .options1{
     position: absolute;
-    top:60%;
+    top:90%;
     left:20%;
+  }
+  .select{
+    padding-right: 50px;
+
   }
   

@@ -19,6 +19,7 @@ var a1=[];
 var a2=[];
 var q=" ";
 var a3=[] ;
+var j=0;
 class paper extends Component{
     call(){
         
@@ -42,22 +43,22 @@ class paper extends Component{
     }
     options(){
         
-       
-        for(var i=0;i<5;i++){
+       j=j+1;
+        
               
-                   
-              return (<div>     
+               return <div className="select">    
+                <label style={{padding:10,marginRight:10,marginTop:100 }}>{j}</label> 
               {elements.map((value, index) => {
-                
-                   return [<input type="radio" value={value} name="options"></input>,
-                    <label>{value}</label>]
+           
+              return [<input type="radio" value={value} name={j} style={{padding:10,marginLeft:100,marginTop:100 }}></input>,
+                    <label style={{padding:10,marginLeft:30,marginTop:100 }}>{value} </label>]
                 
 
                 
               })}
-            </div>)
+              </div>
+           
             
-        }
             
       
         
@@ -70,7 +71,7 @@ class paper extends Component{
    
     for (var i=0;i<a3[0];i++)
     a1[i]=this.options();
-    return a1;  
+  return  a1;  
    }
     renderContent() {
        var str=this.call();
@@ -101,7 +102,7 @@ class paper extends Component{
                
                    <div className="options1">
                    
-                           
+                 
                        
                     
                          {this.option1()}
