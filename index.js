@@ -29,7 +29,7 @@ app.use(
 
     })
 );
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
     app.use(express.static("client/bulid"));
     const path = require("path");
     app.get("*", (req, res) => {
