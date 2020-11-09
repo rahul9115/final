@@ -1,7 +1,7 @@
 const express=require("express");
 const app=express();
 const PORT=process.env.PORT || 5000;
-const host="0.0.0.0";
+
 const passport=require("passport");
 const key=require("./keys/key");
 const passportConfig = require('./services/passport');
@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(passport.initialize());
 app.use(passport.session())
 authroutes(app);
-app.listen(PORT,host,()=>{
+app.listen(PORT,()=>{
     console.log("Server started");
     
 })
