@@ -6,10 +6,9 @@ import css from "./css/exam.css";
 import image from "./images/log.png";
 import Body from "./body";
 import RGF from 'react-google-forms';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import CKEditor from '@ckeditor/ckeditor5-react';
+
 import parse from "html-react-parser";
-import {useForm} from "react-hook-form";
+
 import axios from "axios";
 var a="";
 class exam extends Component{
@@ -37,8 +36,8 @@ class exam extends Component{
     }  
     show1=()=>{
         this.setState({element:<div className="modal-content"><a class="close1" href="#" onClick={this.delete1}>&times;</a> <br></br>
-        <CKEditor editor={ClassicEditor}  
-            ></CKEditor></div>,style:{display:'block'}})
+
+            </div>,style:{display:'block'}})
             
         
     }
@@ -47,21 +46,7 @@ class exam extends Component{
         
         <h1>Enter the choices</h1>
 
-        <CKEditor editor={ClassicEditor} value={this.state.data1}  onChange={(event,editor)=>{
-            const data=editor.getData();
-            this.onsubmit1(data);
-
-        }}
-            ></CKEditor>
-            <h1>Enter the answer</h1>
-            <CKEditor editor={ClassicEditor} value={this.state.data} onChange={(evt,editor) =>{
-                const data=editor.getData()
-                console.log(typeof(data))
-                this.onsubmit(data)
-            } }
-            ></CKEditor>
-            
-            <button onClick={this.pdf} className="ok">Ok</button>
+       
             </div>,style:{display:'block'}})
             
         
@@ -72,7 +57,7 @@ class exam extends Component{
         console.log("form submitted", data);
  
         
-         axios.post('http://localhost:5000/api/stack1', parse(data))
+         axios.post('/api/stack1', parse(data))
              .then(response => console.log(response.data))
              .catch(() => console.log('Error creating new course'))
  
@@ -84,7 +69,7 @@ class exam extends Component{
        console.log("form submitted", data);
 
        
-        axios.post('http://localhost:5000/api/stack', parse(data))
+        axios.post('/api/stack', parse(data))
             .then(response => console.log(response.data))
             .catch(() => console.log('Error creating new course'))
 
@@ -116,7 +101,7 @@ class exam extends Component{
         const formData = new FormData();
         formData.append('file', this.state.input);
           a=this.state.input;
-        axios({url:'http://localhost:5000/api/submit', method:"POST",headers:{authorization:"your token"},data:formData})
+        axios({url:'/api/submit', method:"POST",headers:{authorization:"your token"},data:formData})
         .then(response => console.log(response))
         .catch(() => console.log('Error creating new course'));
         console.log("Questions",this.state.input1);

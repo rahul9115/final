@@ -2,84 +2,58 @@
   "name": "server",
   "version": "0.1.0",
   "private": true,
-  "proxy": {
-    "/auth/google": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/logout": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/state": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/output": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/stack": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/submit": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/submit1": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/final": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/submit2": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/submit3": {
-      "target": "http://localhost:5000/"
-    },
-    "/api/questions": {
-      "target": "http://localhost:5000/"
-    }
-  },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^23.0.0",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "@ckeditor/ckeditor5-react": "^2.1.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@tinymce/tinymce-react": "^3.7.0",
     "axios": "^0.20.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "font-awesome": "^4.7.0",
     "html-react-parser": "^0.14.0",
+    "pdfjs": "^2.4.2",
+    "pdfjs-dist": "^2.0.489",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-google-forms": "^1.0.3",
     "react-helmet": "^6.1.0",
-    "react-hook-form": "^6.9.5",
-    "react-pdf": "^5.0.0",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-rte": "^0.16.3",
-    "react-scripts": "^1.1.0",
+    "react-scripts": "^1.0.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "suneditor-react": "^2.14.3"
+    "regenerator-runtime": "^0.13.7",
+    "suneditor-react": "^2.14.3",
+    "terser-webpack-plugin": "^5.0.3",
+    "webpack": "^3.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "babel ./src --out-dir ./build"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "uglifyjs-webpack-plugin": "^1.3.0",
+    "@babel/cli": "^7.12.1"
   }
 }
