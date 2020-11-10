@@ -23,7 +23,7 @@ class App extends Component{
                     <Route exact path='/' component={Body}/>
                     <Route exact path='/login' style={css} component={login}/>
                     <Route exact path='/exam' style={css} component={exam}/>
-                    <Route exact path='https://intense-badlands-91337.herokuapp.com/paper' style={css} component={paper}/>
+                    <Route exact path='/paper' style={css} component={paper}/>
                                     </BrowserRouter>
 
             </div>
