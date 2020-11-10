@@ -10,10 +10,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     
-    "server": "nodemon index.js ",
+    "server": "nodemon index.js",
     "client1": "npm run start --prefix client1",
     "dev": "concurrently  \"npm run server\" \"npm run client1\"",
-    "start":"npm run server && npm run client1",
+    "start":"node index.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client1 && npm run build --prefix client1"
   },
   "repository": {
