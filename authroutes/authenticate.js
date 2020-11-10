@@ -18,14 +18,14 @@ module.exports = (app) => {
 app.use(bodyParser.urlencoded({ extended: true }));
    app.use(cors());
    app.use(cookieParser());
-    app.get('/auth/google', passport.authenticate('google', {
+    app.get('https://fathomless-cove-72547.herokuapp.com/auth/google', passport.authenticate('google', {
         scope: ['email', 'profile']
     }));
-    app.post("https://intense-badlands-91337.herokuapp.com/api/state",(req,res)=>{
+    app.post("/api/state",(req,res)=>{
         console.log("This",req.body.profile);
         a=req.body.profile;
     })
-    app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
+    app.get('https://fathomless-cove-72547.herokuapp.com/auth/google/callback', passport.authenticate('google'),(req,res)=>{
        if (a=="teacher")
         res.redirect("/login");
        else
