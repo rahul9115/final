@@ -18,7 +18,7 @@ module.exports = (app) => {
 app.use(bodyParser.urlencoded({ extended: true }));
    app.use(cors());
    app.use(cookieParser());
-    app.get('https://fathomless-cove-72547.herokuapp.com/auth/google', passport.authenticate('google', {
+    app.get('/auth/google', passport.authenticate('google', {
         scope: ['email', 'profile']
     }));
     app.post("/api/state",(req,res)=>{
