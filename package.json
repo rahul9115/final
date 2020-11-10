@@ -4,17 +4,17 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "node":"12.18.3",
-    "npm":"6.14.6"
+    "node": "12.18.3",
+    "npm": "6.14.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    
     "server": "nodemon index.js",
     "client1": "npm run start --prefix client1",
     "dev": "concurrently  \"npm run server\" \"npm run client1\"",
-    "start":"npm run dev",
+    "start": "npm run dev",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client1 && npm run build --prefix client1"
+    
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "http-proxy-middleware": "^1.0.5",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.8",
+    "netlify": "^4.9.0",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
     "passport-google-oauth20": "^2.0.0",
