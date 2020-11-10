@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.get('/auth/google', passport.authenticate('google', {
         scope: ['email', 'profile']
     }));
-    app.post("/api/state",(req,res)=>{
+    app.post("https://intense-badlands-91337.herokuapp.com/api/state",(req,res)=>{
         console.log("This",req.body.profile);
         a=req.body.profile;
     })
@@ -51,12 +51,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
         
 
     });
-    app.post('/api/stack',(req,res)=>{
+    app.post('https://intense-badlands-91337.herokuapp.com/api/stack',(req,res)=>{
         var answers=req.body;
         
         res.send(answers)
     })
-    app.post('/api/stack1',(req,res)=>{
+    app.post('https://intense-badlands-91337.herokuapp.com/api/stack1',(req,res)=>{
         var answers=req.body;
         console.log("hola",answers[1].props);
         res.send(answers);
@@ -66,7 +66,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     var file1="";
     var q1="";
     var q="";
-    app.post("/api/submit2",(req,res)=>{
+    app.post("https://intense-badlands-91337.herokuapp.com/api/submit2",(req,res)=>{
         q=req.body;
         
         console.log("No of questions",q.
@@ -79,7 +79,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         questions);
         
     })
-    app.post('/api/submit',(req,res)=>{
+    app.post('https://intense-badlands-91337.herokuapp.com/api/submit',(req,res)=>{
         
         
         console.log("wola",req.files.file);
@@ -114,11 +114,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 })
 var googleId="";
-app.post("/api/submit3",(req,res)=>{
+app.post("https://intense-badlands-91337.herokuapp.com/api/submit3",(req,res)=>{
     googleId=req.body.id;
     console.log("This id",googleId);
 })
-app.get("/api/submit3",(req,res)=>{
+app.get("https://intense-badlands-91337.herokuapp.com/api/submit3",(req,res)=>{
     console.log(googleId)
     var name1="";
     if(info.googleId!=undefined){
