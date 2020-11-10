@@ -1,7 +1,8 @@
-module.exports={
-    clientID: "679163885433-8pfhh5g8f2vh2lp7ebosgpp3dmhrjkpv.apps.googleusercontent.com",
-    clientSecret: "EDm2guYfZyJ5Z5z1P8ea9v1n",
+  
+module.exports = {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "/auth/google/callback",
-    cookiekey: "pp123456789212123434"
-
+    cookiekey: process.env.COOKIE_KEY,
+    mongoURI: process.env.MONGODB_URI
 }
