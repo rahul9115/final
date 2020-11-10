@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
     })
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
        if (a=="teacher")
-        res.redirect("/login");
+        res.redirect("https://intense-badlands-91337.herokuapp.com/login");
        else
-       res.redirect("/paper");
+       res.redirect("https://intense-badlands-91337.herokuapp.com/paper");
         
     }
         
@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         app.get("/api/output",(req,res)=>{
             res.send("");
         })
-        res.redirect("/");
+        res.redirect("https://intense-badlands-91337.herokuapp.com/");
     });
     var info="";
     app.get('/api/output', (req, res) => {
