@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         console.log("This",req.body.profile);
         a=req.body.profile;
     })
-    app.get('https://fathomless-cove-72547.herokuapp.com/auth/google/callback', passport.authenticate('google'),(req,res)=>{
+    app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
        if (a=="teacher")
         res.redirect("/login");
        else
