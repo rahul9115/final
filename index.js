@@ -33,7 +33,7 @@ app.use(
 if (process.env.NODE_ENV == 'production') {
   
  
-            app.use(express.static('client1/build'));
+        app.use(express.static('client1/build/index.html'));
 
  
            
