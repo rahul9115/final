@@ -27,9 +27,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
     })
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
        if (a=="teacher")
-        res.redirect("https://fathomless-cove-72547.herokuapp.com/login");
+        res.redirect("/login");
        else
-       res.redirect("https://fathomless-cove-72547.herokuapp.com/paper");
+       res.redirect("/paper");
         
     }
         
