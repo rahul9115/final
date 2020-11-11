@@ -33,10 +33,8 @@ app.use(
 if (process.env.NODE_ENV == 'production') {
     app.use(express.static('client1/build/'));
     
-   app.use("/client/build/index.html");
-   app.get('/auth/google', passport.authenticate('google', {
-    scope: ['email', 'profile']
-}));
+   
+  
    
 }     
 app.use(passport.initialize());
