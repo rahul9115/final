@@ -32,10 +32,10 @@ app.use(
 );
 if (process.env.NODE_ENV == 'production') {
   
-        
-            app.get("*",(req,res)=>{
-                res.sendFile(__dirname,"client1","build","index.html");
-            })
+ 
+            app.use(express.static('client1/build'));
+ 
+           
         
   
   
