@@ -34,9 +34,9 @@ if (process.env.NODE_ENV == 'production') {
   
         if(app.use(express.static('client1/build'))){
             app.use(express.static('client1/build'));
-        }else{
-            app.use("client/build/index.html")
         }
+            app.use("client/build/index.html")
+        
   
   
 }     
