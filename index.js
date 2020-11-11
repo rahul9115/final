@@ -36,6 +36,9 @@ if (process.env.NODE_ENV == 'production') {
         app.use(express.static('client1/build/index.html'));
 
         app.use(express.static('client1/build'));
+        app.get("*",(req,res)=>{
+            res.sendFile(path.join(__dirname,"client1/build/index.html"));
+        })
            
         
   
