@@ -102,7 +102,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
           
         })
          
-          file.mv(`/client/public/uploads/${file.name}`,err=>{
+          file.mv(`/client1/build/media/${file.name}`,err=>{
             if(err){
                 console.log(err);
                 return res.status(500).send(err);
