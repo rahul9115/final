@@ -114,7 +114,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 })
 var googleId="";
-app.post("/api/submit2",(req,res)=>{
+app.post("/api/submit4",(req,res)=>{
     googleId=req.body.id;
     console.log("This id",googleId);
 })
