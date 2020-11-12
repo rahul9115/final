@@ -86,7 +86,7 @@ class paper extends Component{
           input :evt.target.value
        });
        console.log(evt);
-       axios({url:'http://localhost:5000/api/submit2', method:"POST",headers:{authorization:"your token"},data:{id:evt.target.value}})
+       axios({url:'/api/submit2', method:"POST",headers:{authorization:"your token"},data:{id:evt.target.value}})
        .then(response => console.log(response))
    }
 
