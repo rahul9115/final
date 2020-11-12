@@ -46,7 +46,22 @@ class exam extends Component{
         
         <h1>Enter the choices</h1>
 
-       
+        <CKEditor editor={ClassicEditor} value={this.state.data1}  onChange={(event,editor)=>{
+            const data=editor.getData();
+            this.onsubmit1(data);
+
+        }}
+            ></CKEditor>
+            <h1>Enter the answer</h1>
+            <CKEditor editor={ClassicEditor} value={this.state.data} onChange={(evt,editor) =>{
+                const data=editor.getData()
+                console.log(typeof(data))
+                this.onsubmit(data)
+            } }
+            ></CKEditor>
+            
+            <button onClick={this.pdf} className="ok">Ok</button>
+
             </div>,style:{display:'block'}})
             
         
