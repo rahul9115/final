@@ -119,7 +119,7 @@ app.post("/api/submit3",(req,res)=>{
     console.log("This id",googleId);
 })
 app.get("/api/submit3",(req,res)=>{
-    console.log(googleId)
+    console.log("required",googleId)
     var name1="";
     if(info.googleId!=undefined){
     File.findOne({_id:googleId},(err,user)=>{
