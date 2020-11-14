@@ -31,7 +31,7 @@ class paper extends Component{
     call(){
         
         axios.get("/api/submit3").then(res=>{
-            a.push(res.data.user1);
+            a.push(res.data.url1);
             a3.push(res.data.q); 
             
         });
@@ -91,9 +91,9 @@ class paper extends Component{
    }
 
     renderContent() {
-       var str=this.call();
-       var a2=this.call1();
-       console.log(a2[0],str[0])
+        var str=this.call();
+        var a2=this.call1();
+        console.log(a[0])
        
         switch (this.props.auth) {
             case null:
@@ -114,7 +114,7 @@ class paper extends Component{
                   
                     </div>
                     <div className="pdf1">
-                    <embed src={`/client1/build/media/${str[0]}`} width="1200px" height="600px" />
+                    <embed src={`${a[0]}`} width="1200px" height="600px" />
                   </div>
                    </div>
                 

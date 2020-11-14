@@ -4,7 +4,8 @@ const dataSchema1=new mongoose.Schema({
     email:Object,
     name: String,
     files:Object,
-    questions:Number
+    questions:Number,
+    pdf_id:String
 
 });
 module.exports=mongoose.model('files',dataSchema1);

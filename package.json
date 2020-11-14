@@ -8,14 +8,12 @@
     "npm": "6.14.6"
   },
   "scripts": {
-    
     "server": "nodemon index.js",
     "start": "(cd client1 && npm run start) & npm run server ",
     "client1": "npm run start --prefix client1",
     "clientinstall": "npm install --prefix client1",
     "dev": "concurrently  \"npm run server\" \"npm run client1\"",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client1 && npm run build --prefix client1"
-    
   },
   "repository": {
     "type": "git",
@@ -28,6 +26,7 @@
   },
   "homepage": "https://github.com/rahul9115/exam4#readme",
   "dependencies": {
+    "aws-sdk": "^2.792.0",
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "concurrently": "^3.2.0",
@@ -38,8 +37,10 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.2.0",
     "http-proxy-middleware": "^1.0.5",
+    "hypdf": "^0.1.2",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.8",
+    "multer": "^1.4.2",
     "netlify": "^4.9.0",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
