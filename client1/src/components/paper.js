@@ -21,6 +21,7 @@ var a2=[];
 var q=" ";
 var a3=[];
 var j=0;
+var value=false;
 class paper extends Component{
     constructor(props){
         super(props);
@@ -94,10 +95,9 @@ class paper extends Component{
         var str=this.call();
         var a2=this.call1();
         console.log(a[0])
-       
-        switch (this.props.auth) {
-            case null:
-                return <Body />;
+        this.call3();
+        switch (value) {
+           
             case false:
                 return <Body />;
             default:

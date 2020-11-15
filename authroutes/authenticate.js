@@ -42,14 +42,35 @@ app.use(bodyParser.urlencoded({ extended: true }));
         a=req.body.profile;
     })
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
-       if (a=="teacher")
-        res.redirect("/login");
-       else
-       res.redirect("/paper");
-        
-    }
-        
-    );
+        if (a=="teacher"){
+            app.get('/api/output', (req, res) => {
+    
+               
+                      console.log(a);
+                  info=req.user;
+                  
+                  res.send(req.user);
+                
+          
+              });
+            res.redirect("/login");
+           
+        }
+           else{
+            app.get('/api/output1', (req, res) => {
+    
+                
+                  console.log("in",a);
+                  info=req.user;
+              
+                  res.send(req.user);
+                
+          
+          });
+            res.redirect("/paper");
+           }
+            
+    });
     app.get("/api/logout", (req, res) => {
         req.logout();
         app.get("/api/output",(req,res)=>{
