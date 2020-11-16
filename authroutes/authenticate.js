@@ -64,15 +64,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
        }
        if (a=="student"){
         app.get('/api/output1', (req, res) => {
-            app.get('/api/output', (req, res) => {
-
-        
-                
-                
-                res.send("");
-                
-        
-            });
+            
         
             info=req.user;
             
