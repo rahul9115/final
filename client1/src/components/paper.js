@@ -50,6 +50,14 @@ class paper extends Component{
         return a3;
       
     }
+    call3(){
+        axios.get("/api/output1").then(res=>{
+            if(res.data){
+                value=true;
+            }
+             
+         });
+    }
     options(){
         
        j=j+1;
