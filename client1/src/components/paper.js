@@ -11,7 +11,7 @@ import exam from "./exam";
 import * as actions from "../actions";
 
 import fonts from '../../node_modules/font-awesome/css/font-awesome.min.css';
-
+import axios from "axios";
 const elements=['A','B','C','D'];
 const options=[]
 var a=[];
@@ -99,7 +99,7 @@ class paper extends Component{
         this.call3();
         switch (auth) {
            case null:
-            return <Body />;
+               return <Body />;
             case false:
                 return <Body />;
             default:
