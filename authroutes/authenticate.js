@@ -63,7 +63,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
             res.redirect("/login");
            
         }if(a=="student"){
+            app.get('/api/output1', (req, res) => {
+                app.get('/api/output', (req, res) => {
+    
+                    
+                
+                    res.send("");
+                  
             
+            });
+               
+                console.log("in");
+            info=req.user;
+            
+            res.send(req.user);
+          
+        
+        });
             res.redirect("/paper");
            }
             
