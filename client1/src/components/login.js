@@ -4,10 +4,11 @@ import {connect} from "react-redux";
 import css from "./css/login.css";
 import image from "./images/log.png";
 import Body from "./body";
+import axios from "axios";
 var value=false;
 class login extends Component{
     call3(){
-        axios.get("/api/output1").then(res=>{
+        axios.get("/api/output").then(res=>{
             if(res.data){
                 value=true;
             }
