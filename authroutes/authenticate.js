@@ -66,6 +66,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         });
        res.redirect("/paper");
        }else{
+           
            res.send("");
        }
         
@@ -77,13 +78,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
         
                 
                 
-        res.send("");
+        res.send(req.user);
         
 
     });
     app.get("/api/logout", (req, res) => {
         req.logout();
+        app.get('/api/output', (req, res) => {
+
         
+                
+                
+            res.send("");
+            
+    
+        });
+        app.get('/api/output1', (req, res) => {
+
+        
+                
+                
+            res.send("");
+            
+    
+        });
         res.redirect("/");
     });
     var info="";

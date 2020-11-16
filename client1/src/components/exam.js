@@ -11,6 +11,7 @@ import parse from "html-react-parser";
 
 import axios from "axios";
 var a="";
+var value=false;
 class exam extends Component{
         
     constructor(props){
@@ -29,7 +30,14 @@ class exam extends Component{
         
         
     }
-   
+    call3(){
+        axios.get("/api/output").then(res=>{
+            if(res.data){
+                value=true;
+            }
+             
+         });
+    }
     show=()=>{
         this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="ques" onClick={this.show1}>+ Add question</a></div>,style:{display:'block'}
         })
@@ -127,7 +135,8 @@ class exam extends Component{
       
     renderContent() {
         console.log(this.style)
-        switch (this.props.auth) {
+        this.call3()
+        switch (value) {
             case null:
                 return <Body />;
             case false:
