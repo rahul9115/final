@@ -40,38 +40,31 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.post("/api/state",(req,res)=>{
         console.log("This",req.body.profile);
         a=req.body.profile;
-    });
+    })
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
-        if (a=="teacher"){
-            
-            res.redirect("/login");
-           
-        }if(a=="student"){
-           
-            res.redirect("/paper");
-           }
-            
-    });
-   
-    app.get('/api/output', (req, res) => {
-                
-               
-        console.log("in");
-    info=req.user;
-    
-    res.send(req.user);
-  
-
-});
+       if (a=="teacher")
+        res.redirect("/login");
+       else
+       res.redirect("/paper");
+        
+    }
+        
+    );
     app.get("/api/logout", (req, res) => {
         req.logout();
-        app.get("/api/output",(req,res)=>{
-            res.send("");
-        })
-        res.redirect("https://fathomless-cove-72547.herokuapp.com/");
+        
+        res.redirect("/");
     });
     var info="";
-    
+    app.get('/api/output', (req, res) => {
+
+        
+        info=req.user;
+        
+        res.send(req.user);
+        
+
+    });
     app.post('/api/stack',(req,res)=>{
         var answers=req.body;
         
