@@ -52,9 +52,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     );
     app.get("/api/logout", (req, res) => {
         req.logout();
-        app.get("/api/output",(req,res)=>{
-            res.send("");
-        })
+        
         res.redirect("https://fathomless-cove-72547.herokuapp.com/");
     });
     var info="";
