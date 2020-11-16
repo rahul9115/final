@@ -104,7 +104,7 @@ class paper extends Component{
         var a2=this.call1();
         console.log(a[0])
         this.call3();
-        switch (auth) {
+        switch (this.props.auth) {
            case null:
             return <Body />;
             case false:
