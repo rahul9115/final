@@ -44,29 +44,26 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
         if (a=="teacher"){
             app.get('/api/output', (req, res) => {
+                app.get('/api/output1', (req, res) => {
     
-               
-                      console.log(a);
-                  info=req.user;
-                  
-                  res.send(req.user);
+                    
                 
+                    res.send("");
+                  
+            
+            });
+               
+                console.log("in");
+            info=req.user;
+            
+            res.send(req.user);
           
-              });
+        
+        });
             res.redirect("/login");
            
-        }
-           else{
-            app.get('/api/output1', (req, res) => {
-    
-                
-                  console.log("in",a);
-                  info=req.user;
-              
-                  res.send(req.user);
-                
-          
-          });
+        }if(a=="student"){
+            
             res.redirect("/paper");
            }
             
