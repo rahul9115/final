@@ -40,7 +40,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.post("/api/state",(req,res)=>{
         console.log("This",req.body.profile);
         a=req.body.profile;
-    })
+    });
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
         if (a=="teacher"){
             
@@ -52,16 +52,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
            }
             
     });
-    app.get('/api/output1', (req, res) => {
-                
-               
-        console.log("in");
-    info=req.user;
-    
-    res.send(req.user);
-  
-
-});
+   
     app.get('/api/output', (req, res) => {
                 
                
