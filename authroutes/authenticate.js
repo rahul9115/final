@@ -44,7 +44,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
        if (a=="teacher"){
         app.get('/api/output', (req, res) => {
+            app.get('/api/output1', (req, res) => {
 
+        
+                
+                
+                res.send("");
+                
+        
+            });
         
             info=req.user;
             
@@ -56,7 +64,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
        }
        if (a=="student"){
         app.get('/api/output1', (req, res) => {
+            app.get('/api/output', (req, res) => {
 
+        
+                
+                
+                res.send("");
+                
+        
+            });
         
             info=req.user;
             
