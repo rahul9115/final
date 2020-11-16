@@ -32,6 +32,9 @@ class Body extends Component{
         style1:{backgroundColor:"white",color:"black"},
         profile:"teacher"});
     }
+    call(){
+        axios({url:"/api/state",method:"POST",data:this.state})
+    }
     render(){
         console.log(this.props)
         return(
@@ -48,7 +51,7 @@ class Body extends Component{
                   <a href="#" class="student" onClick={this.updateStudent} style={this.state.style}>Student</a>
                   <a href="#" class="teacher" onClick={this.updateTeacher} style={this.state.style1}>Teacher</a>
                   <a href="#" className="login">{this.state.element}</a>
-                  {this.props.handleToken(this.state)}
+                  
                   </div> 
            
             </div>
