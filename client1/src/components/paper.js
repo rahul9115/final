@@ -9,7 +9,7 @@ import RGF from 'react-google-forms';
 import file_name from "./exam";
 import exam from "./exam";
 import * as actions from "../actions";
-import axios from "axios";
+
 import fonts from '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 const elements=['A','B','C','D'];
@@ -21,7 +21,7 @@ var a2=[];
 var q=" ";
 var a3=[];
 var j=0;
-var value=false;
+
 class paper extends Component{
     constructor(props){
         super(props);
@@ -50,14 +50,7 @@ class paper extends Component{
         return a3;
       
     }
-    call3(){
-        axios.get("/api/output1").then(res=>{
-            if(res.data){
-                value=true;
-            }
-             
-         });
-    }
+
     options(){
         
        j=j+1;
@@ -104,8 +97,9 @@ class paper extends Component{
         var a2=this.call1();
         console.log(a[0])
         this.call3();
-        switch (value) {
-           
+        switch (auth) {
+           case null:
+            return <Body />;
             case false:
                 return <Body />;
             default:
