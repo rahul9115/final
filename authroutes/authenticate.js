@@ -92,15 +92,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         res.redirect("https://fathomless-cove-72547.herokuapp.com/");
     });
     var info="";
-    app.get('/api/output', (req, res) => {
-
-        
-        info=req.user;
-        
-        res.send(req.user);
-        
-
-    });
+    
     app.post('/api/stack',(req,res)=>{
         var answers=req.body;
         
