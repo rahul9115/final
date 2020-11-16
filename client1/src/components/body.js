@@ -5,6 +5,7 @@ import Header1 from "./css/Header.css";
 import {connect} from "react-redux";
 import image from "./images/log.png";
 import * as actions from "../actions";
+import axios from "axios";
 class Body extends Component{
     
     constructor(props){
