@@ -5,7 +5,6 @@ import css from "./css/paper.css";
 import image from "./images/log.png";
 import Body from "./body";
 import RGF from 'react-google-forms';
-
 import file_name from "./exam";
 import exam from "./exam";
 import * as actions from "../actions";
@@ -58,6 +57,7 @@ class paper extends Component{
              
          });
     }
+   
     options(){
         
        j=j+1;
@@ -104,7 +104,7 @@ class paper extends Component{
         var a2=this.call1();
         console.log(a[0])
         this.call3();
-        switch (this.props.auth) {
+        switch (value) {
            case null:
             return <Body />;
             case false:
