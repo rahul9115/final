@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 import css from "./css/paper.css";
 import image from "./images/log.png";
 import Body from "./body";
-import RGF from 'react-google-forms';
-import { Document, Page } from 'react-pdf';
+
+
 import file_name from "./exam";
 import exam from "./exam";
 import * as actions from "../actions";
