@@ -80,15 +80,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     }
         
     );
-    app.get('/api/output', (req, res) => {
-
-        
-                
-                
-        res.send(req.user);
-        
-
-    });
+    
     app.get("/api/logout", (req, res) => {
         req.logout();
         app.get('/api/output', (req, res) => {
