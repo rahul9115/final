@@ -25,7 +25,8 @@ class paper extends Component{
     constructor(props){
         super(props);
         this.state={
-            input:null
+            input:null,
+            value:null
         }
     }
     call(){
@@ -49,13 +50,14 @@ class paper extends Component{
         return a3;
       
     }
-    call3(){
-        axios.get("/api/output1").then(res=>{
-            if(res.data){
-                value=true;
-            }
-             
-         });
+    async call3(){
+        
+        const res=await axios.get("/api/output1");
+       
+         value.push(res.data._id);
+         m=res.data._id;
+         console.log(m);
+         return m;
     }
    
     options(){
@@ -103,8 +105,10 @@ class paper extends Component{
         var str=this.call();
         var a2=this.call1();
         console.log(a[0])
-        this.call3();
-        switch (value) {
+        this.call3().then(data=>{
+            this.state.value=data
+        });
+        switch (this.state.value) {
            case null:
             return <Body />;
             case false:

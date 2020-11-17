@@ -2,7 +2,7 @@ const passport = require('passport');
 var a="";
 const fileupload=require('express-fileupload');
 const fs=require('fs');
-
+var FileManager = require('file-storage');
 require('../models/file')
 const mongoose=require('mongoose');
 const { Binary } = require('mongodb');
@@ -11,9 +11,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 var customId=require("custom-id");
-const AWS=require('aws-sdk');
-const multer=require("multer");
 var axios=require("axios");
+const AWS=require('aws-sdk');
+const crypto=require("crypto");
+const multer=require("multer");
 const mongouri="mongodb+srv://rahul:rahul@cluster0.rpfjy.mongodb.net/<dbname>?retryWrites=true&w=majority";
 const conn =mongoose.createConnection(mongouri);
 var id="";
@@ -30,6 +31,7 @@ const storage=multer.memoryStorage({
   const upload = multer({ storage });
 module.exports = (app) => {
    app.use(fileupload());
+   app.set("view engine","ejs");
    app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
    app.use(cors());
@@ -43,69 +45,47 @@ app.use(bodyParser.urlencoded({ extended: true }));
     })
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
        if (a=="teacher"){
+       
         app.get('/api/output', (req, res) => {
-            
-        
+
+            console
             info=req.user;
             
             res.send(req.user);
             
     
-        });
+        });   
         res.redirect("/login");
-       }
-       if (a=="student"){
+    }
+       if(a=="student"){
         app.get('/api/output1', (req, res) => {
-           
+            app.get('/api/output', (req, res) => {
+    
+               
+                
+                res.send("");
+                
         
+            });   
             info=req.user;
             
             res.send(req.user);
-            
-    
-        });
-       res.redirect("/paper");
-       }else{
-           
-           res.send("");
-       }
-        
+    })
+    res.redirect("/paper");
     }
         
-    );
-    app.get('/api/output', (req, res) => {
-
-        
-                
-                
-        res.send(req.user);
-        
-
-    });
+ });
     app.get("/api/logout", (req, res) => {
         req.logout();
-        app.get('/api/output', (req, res) => {
-
-        
-                
-                
+        app.get("/api/output",(req,res)=>{
             res.send("");
-            
-    
-        });
-        app.get('/api/output1', (req, res) => {
-
-        
-                
-                
-            res.send("");
-            
-    
-        });
+        })
         res.redirect("/");
     });
     var info="";
     
+        
+       
     app.post('/api/stack',(req,res)=>{
         var answers=req.body;
         
@@ -138,9 +118,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
         
         
         console.log("wola",req.files.file);
+                  
         const file=req.files.file;
-        var id=customId(file);
-        console.log("file",file);
+        id=customId(file);
         upload.single(file);
         const params={
                 Bucket:"exam-rahul-vemuri-12",
@@ -155,6 +135,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
                 }
                 res.status(200).send(data);
         })
+        console.log("file",file);
         File.findOne({_id:info.googleId}).then((existingUser)=>{
             if(existingUser){
                 console.log("in to delete");
@@ -170,8 +151,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
             
           
         })
-         
-          file.mv(`/client1/build/media/${file.name}`,err=>{
+       
+          file.mv(`C:/Users/sudha/Downloads/exam4/client/public/uploads/${file.name}`,err=>{
             if(err){
                 console.log(err);
                 return res.status(500).send(err);
@@ -183,17 +164,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 })
 var googleId="";
-app.post("/api/submit4",(req,res)=>{
+app.post("/api/submit3",(req,res)=>{
     googleId=req.body.id;
     console.log("This id",googleId);
 })
 app.get("/api/submit3",(req,res)=>{
-    console.log("required name",googleId)
+    console.log(googleId)
     var name1="";
     if(info.googleId!=undefined){
     File.findOne({_id:googleId},(err,user)=>{
         if(user!=null){
-        name1=user.name;
+        
         const params={
             Bucket:"exam-rahul-vemuri-12",
             Key:user.pdf_id
@@ -213,9 +194,11 @@ app.get("/api/submit3",(req,res)=>{
                 res.send({user1:user.name,q:user.questions,url1:url});
          })
         
+        
         }else{
             res.send("no data");
         }
+       
     })
 }
 })
