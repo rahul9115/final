@@ -5,6 +5,7 @@ import css from "./css/paper.css";
 import image from "./images/log.png";
 import Body from "./body";
 import RGF from 'react-google-forms';
+import { Document, Page } from 'react-pdf';
 import file_name from "./exam";
 import exam from "./exam";
 import * as actions from "../actions";
@@ -20,20 +21,21 @@ var a2=[];
 var q=" ";
 var a3=[];
 var j=0;
+var value=[];
 var m=0;
-var value=false;
 class paper extends Component{
     constructor(props){
         super(props);
         this.state={
             input:null,
-            value:null
+            value
         }
     }
     call(){
         
         axios.get("/api/submit3").then(res=>{
             a.push(res.data.url1);
+            console.log(res.data.url1)
             a3.push(res.data.q); 
             
         });
@@ -60,7 +62,6 @@ class paper extends Component{
          console.log(m);
          return m;
     }
-   
     options(){
         
        j=j+1;
@@ -97,21 +98,26 @@ class paper extends Component{
        this.setState({
           input :evt.target.value
        });
-       console.log(evt);
-       axios({url:'/api/submit4', method:"POST",headers:{authorization:"your token"},data:{id:evt.target.value}})
+       axios({url:'http://localhost:5000/api/submit3', method:"POST",headers:{authorization:"your token"},data:{id:evt.target.value}})
        .then(response => console.log(response))
    }
 
     renderContent() {
-        var str=this.call();
-        var a2=this.call1();
-        console.log(a[0])
-        this.call3().then(data=>{
-            this.state.value=data
-        });
+       var str=this.call();
+       var a2=this.call1();
+       console.log(a[0])
+       var str4='"'+a[0]+'"';
+       console.log(str);
+       console.log(m)
+       var m1=[]
+       this.call3().then(data=>{
+        this.state.value=data
+    });
+    
+       
         switch (this.state.value) {
-           case null:
-            return <Body />;
+            case undefined:
+                return <Body />;
             case false:
                 return <Body />;
             default:
@@ -128,6 +134,7 @@ class paper extends Component{
                   
                     </div>
                     <div className="pdf1">
+                        
                     <embed src={`${a[0]}`} width="1200px" height="600px" />
                   </div>
                    </div>
@@ -151,7 +158,9 @@ class paper extends Component{
 
 
         }
+    
     }
+
     render(){
         console.log(this.props.auth);
         return(
