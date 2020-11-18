@@ -57,14 +57,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
        if (a=="student"){
         app.get('/api/output1', (req, res) => {
            
-            app.get('/api/output', (req, res) => {
-    
-               
-                
-                res.send(" ");
-                
-        
-            });   
+            
             info=req.user;
             
             res.send(req.user);
@@ -80,15 +73,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     }
         
     );
-    app.get('/api/output', (req, res) => {
-            
-        
-        info=req.user;
-        
-        res.send(req.user);
-        
-
-    });
+    
     app.get("/api/logout", (req, res) => {
         req.logout();
         app.get('/api/output', (req, res) => {
