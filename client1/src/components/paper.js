@@ -22,25 +22,23 @@ var q=" ";
 var a3=[];
 var j=0;
 var value=[];
-var m=0;
+var m1=0;
 class paper extends Component{
     constructor(props){
         super(props);
         this.state={
             input:null,
-            value
+            value:null,
+            questions:null,
+            url:null            
         }
     }
-    call(){
+    async call(){
         
-        axios.get("/api/submit3").then(res=>{
-            a.push(res.data.url1);
-            console.log(res.data.url1)
-            a3.push(res.data.q); 
-            
-        });
+        const res=await axios.get("/api/submit3");
+        m1=res.data;
         
-        return a;
+        return m1;
          
        
     }
@@ -90,7 +88,7 @@ class paper extends Component{
    
    
    
-    for (var i=0;i<a3[0];i++)
+    for (var i=0;i<this.state.questions;i++)
     a1[i]=this.options();
   return  a1;  
    }
@@ -103,7 +101,10 @@ class paper extends Component{
    }
 
     renderContent() {
-       this.call();
+       this.call().then(data=>{
+           this.state.questions=data.q;
+           this.state.url=data.url
+       });
        var a2=this.call1();
        console.log(a[0])
        var str4='"'+a[0]+'"';
@@ -135,7 +136,7 @@ class paper extends Component{
                     </div>
                     <div className="pdf1">
                         
-                    <embed src={`"${a[0]}"`} width="1200px" height="600px" />
+                    <embed src={`${this.state.url}`} width="1200px" height="600px" />
                   </div>
                    </div>
                 
