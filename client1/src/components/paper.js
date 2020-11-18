@@ -101,7 +101,7 @@ class paper extends Component{
        
 
        
-       console.log(a[0],a3[0])
+       console.log(this.state.value)
        
        
        
@@ -114,6 +114,10 @@ class paper extends Component{
         switch (this.state.value) {
             case null:
                 return <Body />;
+            case undefined:
+                return <Body />;
+                    
+                    
             case false:
                 return <Body />;
             default:
