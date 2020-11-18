@@ -44,7 +44,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
        if (a=="teacher"){
         app.get('/api/output', (req, res) => {
-            
+            console.log("wolabbi")
         
             info=req.user;
             
