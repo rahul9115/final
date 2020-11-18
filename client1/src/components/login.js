@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import css from "./css/login.css";
 import image from "./images/log.png";
 import Body from "./body";
-import RGF from 'react-google-forms'
+
 class login extends Component{
     renderContent() {
         

@@ -5,11 +5,11 @@ import {connect} from "react-redux";
 import css from "./css/exam.css";
 import image from "./images/log.png";
 import Body from "./body";
-import RGF from 'react-google-forms';
+
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import parse from "html-react-parser";
-import {useForm} from "react-hook-form";
+
 import axios from "axios";
 var a="";
 class exam extends Component{
