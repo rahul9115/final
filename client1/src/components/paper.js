@@ -112,7 +112,7 @@ class paper extends Component{
     
        
         switch (this.state.value) {
-            case undefined:
+            case null:
                 return <Body />;
             case false:
                 return <Body />;
