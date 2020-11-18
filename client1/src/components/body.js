@@ -17,7 +17,9 @@ class Body extends Component{
             profile:"student"
         }
     }
-    
+    componentDidMount(){
+        this.props.fetchUser();
+    }
     updateStudent=()=>{
         console.log("in student");
         this.setState({element:<a href="/auth/google" className="teah"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,

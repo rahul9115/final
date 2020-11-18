@@ -7,17 +7,11 @@ import Body from "./body";
 import axios from "axios";
 var value=false;
 class login extends Component{
-    call3(){
-        axios.get("/api/output").then(res=>{
-            if(res.data){
-                value=true;
-            }
-             
-         });
-    }
+
+
     renderContent() {
-        this.call3()
-        switch (value) {
+       
+        switch (this.props.auth) {
             case null:
                 return <Body />;
             case false:
