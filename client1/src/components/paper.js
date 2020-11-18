@@ -45,7 +45,15 @@ class paper extends Component{
        
     }
    
-   
+    async call1(){
+        
+        const res=await axios.get("/api/questions");
+        a3.push(res.data.q);
+        console.log(a3)
+        a.push(res.data.url1)
+        return a3;
+      
+    }
     async call3(){
         
         const res=await axios.get("/api/output1");
