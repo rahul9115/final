@@ -56,7 +56,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
        }
        if (a=="student"){
         app.get('/api/output1', (req, res) => {
-           
+            console.log("wolabbi")
             app.get('/api/output', (req, res) => {
             
         
