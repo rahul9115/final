@@ -197,6 +197,3 @@ function mapStateToProps({ auth }) {
     return { auth };
   }
 export default connect( mapStateToProps)(exam);
-export const file_name=()=> {
-    return a;
-}

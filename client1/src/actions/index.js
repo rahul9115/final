@@ -8,13 +8,7 @@ export function fetchUser() {
     }
 
 };
-export function handleToken(token) {
-    console.log(token);
-    return function (dispatch) {
-        axios.post("/api/state", token).then(res => dispatch({ type: FETCH_USER, payload: res.data }))
 
-    }
-};
 export function answers(token) {
     console.log(token);
     return function (dispatch) {
