@@ -103,13 +103,9 @@ class paper extends Component{
    }
 
     renderContent() {
-       this.call().then(data=>{
-           this.setState({
-            questions:data.q,
-            url:data.url1
-           })
+       this.call()
            
-       });
+       
 
        
        console.log(this.state.url,this.state.questions)
