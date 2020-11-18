@@ -90,7 +90,7 @@ class paper extends Component{
    
    
    
-    for (var i=0;i<this.state.questions;i++)
+    for (var i=0;i<a3[0];i++)
     a1[i]=this.options();
   return  a1;  
    }
@@ -142,7 +142,7 @@ class paper extends Component{
                     </div>
                     <div className="pdf1">
                         
-                    <embed src={`${this.state.url}`} width="1200px" height="600px" />
+                    <embed src={`${a[0]}`} width="1200px" height="600px" />
                   </div>
                    </div>
                 
