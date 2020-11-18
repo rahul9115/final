@@ -131,7 +131,7 @@ class paper extends Component{
                     </div>
                     <div className="pdf1">
                         
-                    <embed src={`https://exam-rahul-vemuri-12.s3.amazonaws.com/97RL49ZZ`} width="1200px" height="600px" />
+                    <embed src={`${a[0]}`} width="1200px" height="600px" />
                   </div>
                    </div>
                 
