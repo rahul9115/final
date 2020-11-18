@@ -103,11 +103,11 @@ class paper extends Component{
    }
 
     renderContent() {
-       var str=this.call();
+       this.call();
        var a2=this.call1();
        console.log(a[0])
        var str4='"'+a[0]+'"';
-       console.log(str);
+       
        console.log(m)
        var m1=[]
        this.call3().then(data=>{
