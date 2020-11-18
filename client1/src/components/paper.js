@@ -38,7 +38,7 @@ class paper extends Component{
         
         const res=await axios.get("/api/submit3");
         m1=res.data;
-        a.push(res.data.url);
+        a.push(res.data.url1);
         a3.push(res.data.q);
         return m1;
          
