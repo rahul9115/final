@@ -109,7 +109,7 @@ class paper extends Component{
        console.log(a[0])
        var str4='"'+a[0]+'"';
        console.log(this.state.questions, this.state.url);
-       console.log(m)
+       
        var m1=[]
        this.call3().then(data=>{
         this.state.value=data
