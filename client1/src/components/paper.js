@@ -106,7 +106,7 @@ class paper extends Component{
        this.call().then(data=>{
            this.setState({
             questions:data.q,
-            url:data.url
+            url:data.url1
            })
            
        });
