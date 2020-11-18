@@ -23,20 +23,22 @@ class exam extends Component{
             data:'<p>React is really <em>nice</em>!</p>',
             data1:'<p>React is really <em>nice</em>!</p>',
             input:null,
-            input1:null
+            input1:null,
+            value:null
             
             
         }
         
         
     }
-    call3(){
-        axios.get("/api/output").then(res=>{
-            if(res.data){
-                value=true;
-            }
-             
-         });
+    async call3(){
+        
+        const res=await axios.get("/api/output");
+       
+         value.push(res.data._id);
+         m=res.data._id;
+         console.log(m);
+         return m;
     }
     show=()=>{
         this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="ques" onClick={this.show1}>+ Add question</a></div>,style:{display:'block'}
@@ -134,10 +136,11 @@ class exam extends Component{
 
       
     renderContent() {
-        console.log(this.style)
-        this.call3()
+        this.call3().then(data=>{
+            this.state.value=data
+        });
 
-        switch (this.props.auth) {
+        switch (this.state.value) {
             case null:
                 return <Body />;
             case false:

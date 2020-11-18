@@ -7,16 +7,25 @@ import Body from "./body";
 import axios from "axios";
 var value=false;
 class login extends Component{
-    call3(){
-        axios.get("/api/output").then(res=>{
-            if(res.data){
-                value=true;
-            }
-             
-         });
+    constructor(props){
+        super(props);
+        this.state={
+            input:null,
+            value:null
+                   
+        }
+    }
+    async call3(){
+        
+        const res=await axios.get("/api/output");
+       
+         value.push(res.data._id);
+         m=res.data._id;
+         console.log(m);
+         return m;
     }
     renderContent() {
-        console.log(this.props.auth)
+        console.log(this.state.value)
         switch (this.props.auth) {
             case null:
                 return <Body />;
