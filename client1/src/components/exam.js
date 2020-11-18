@@ -12,6 +12,7 @@ import parse from "html-react-parser";
 import axios from "axios";
 var a="";
 var value=false;
+var m=0;
 class exam extends Component{
         
     constructor(props){

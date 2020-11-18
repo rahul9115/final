@@ -6,6 +6,7 @@ import image from "./images/log.png";
 import Body from "./body";
 import axios from "axios";
 var value=false;
+var m=0;
 class login extends Component{
     constructor(props){
         super(props);
