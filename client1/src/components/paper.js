@@ -22,6 +22,7 @@ var q=" ";
 var a3=[];
 var j=0;
 var value=[];
+var m=0;
 var m1=0;
 class paper extends Component{
     constructor(props){
