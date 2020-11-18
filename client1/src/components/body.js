@@ -7,7 +7,10 @@ import image from "./images/log.png";
 import * as actions from "../actions";
 import axios from "axios";
 class Body extends Component{
-    
+    componentDidMount() {
+        this.props.fetchUser();
+
+    }
     constructor(props){
         super(props);
         this.state={
@@ -17,9 +20,7 @@ class Body extends Component{
             profile:"student"
         }
     }
-    componentDidMount(){
-        this.props.fetchUser();
-    }
+   
     updateStudent=()=>{
         console.log("in student");
         this.setState({element:<a href="/auth/google" className="teah"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
