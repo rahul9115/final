@@ -98,7 +98,7 @@ class paper extends Component{
        this.setState({
           input :evt.target.value
        });
-       axios({url:'http://localhost:5000/api/submit3', method:"POST",headers:{authorization:"your token"},data:{id:evt.target.value}})
+       axios({url:'/api/submit3', method:"POST",headers:{authorization:"your token"},data:{id:evt.target.value}})
        .then(response => console.log(response))
    }
 
