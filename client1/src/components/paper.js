@@ -108,7 +108,7 @@ class paper extends Component{
        
 
        
-       console.log(this.state.url,this.state.questions)
+       console.log(a[0],a3[0])
        
        
        
