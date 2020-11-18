@@ -136,7 +136,8 @@ class exam extends Component{
     renderContent() {
         console.log(this.style)
         this.call3()
-        switch (value) {
+
+        switch (this.props.auth) {
             case null:
                 return <Body />;
             case false:

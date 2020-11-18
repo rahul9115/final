@@ -17,7 +17,7 @@ class login extends Component{
     }
     renderContent() {
         this.call3()
-        switch (value) {
+        switch (this.props.auth) {
             case null:
                 return <Body />;
             case false:
