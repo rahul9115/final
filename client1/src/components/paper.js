@@ -110,7 +110,7 @@ class paper extends Component{
        var a2=this.call1();
        console.log(a[0])
        var str4='"'+a[0]+'"';
-       console.log(this.state.questions, this.state.url);
+       console.log(a[0], a3[0]);
        
        var m1=[]
        this.call3().then(data=>{
