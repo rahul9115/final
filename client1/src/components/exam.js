@@ -141,7 +141,7 @@ class exam extends Component{
             this.state.value=data
         });
 
-        switch (this.state.value) {
+        switch (this.props.auth) {
             case null:
                 return <Body />;
             case false:
