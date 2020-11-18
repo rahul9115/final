@@ -90,7 +90,7 @@ class paper extends Component{
    
    
    
-    for (var i=0;i<a3[0];i++)
+    for (var i=0;i<this.state.questions;i++)
     a1[i]=this.options();
   return  a1;  
    }
@@ -104,8 +104,11 @@ class paper extends Component{
 
     renderContent() {
        this.call().then(data=>{
-           this.state.questions=data.q;
-           this.state.url=data.url
+           this.setState({
+            questions:data.q,
+            url:data.url
+           })
+           
        });
        var a2=this.call1();
        console.log(a[0])
@@ -138,7 +141,7 @@ class paper extends Component{
                     </div>
                     <div className="pdf1">
                         
-                    <embed src={`${a[0]}`} width="1200px" height="600px" />
+                    <embed src={`${this.state.url}`} width="1200px" height="600px" />
                   </div>
                    </div>
                 
