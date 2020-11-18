@@ -5,13 +5,13 @@ import {connect} from "react-redux";
 import css from "./css/exam.css";
 import image from "./images/log.png";
 import Body from "./body";
+import RGF from 'react-google-forms';
 
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import CKEditor from '@ckeditor/ckeditor5-react';
 import parse from "html-react-parser";
 
 import axios from "axios";
 var a="";
+var value=false;
 class exam extends Component{
         
     constructor(props){
@@ -30,15 +30,22 @@ class exam extends Component{
         
         
     }
-   
+    call3(){
+        axios.get("/api/output").then(res=>{
+            if(res.data){
+                value=true;
+            }
+             
+         });
+    }
     show=()=>{
         this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="ques" onClick={this.show1}>+ Add question</a></div>,style:{display:'block'}
         })
     }  
     show1=()=>{
         this.setState({element:<div className="modal-content"><a class="close1" href="#" onClick={this.delete1}>&times;</a> <br></br>
-        <CKEditor editor={ClassicEditor}  
-            ></CKEditor></div>,style:{display:'block'}})
+
+            </div>,style:{display:'block'}})
             
         
     }
@@ -47,21 +54,10 @@ class exam extends Component{
         
         <h1>Enter the choices</h1>
 
-        <CKEditor editor={ClassicEditor} value={this.state.data1}  onChange={(event,editor)=>{
-            const data=editor.getData();
-            this.onsubmit1(data);
-
-        }}
-            ></CKEditor>
-            <h1>Enter the answer</h1>
-            <CKEditor editor={ClassicEditor} value={this.state.data} onChange={(evt,editor) =>{
-                const data=editor.getData()
-                console.log(typeof(data))
-                this.onsubmit(data)
-            } }
-            ></CKEditor>
+        
             
             <button onClick={this.pdf} className="ok">Ok</button>
+
             </div>,style:{display:'block'}})
             
         
@@ -72,7 +68,7 @@ class exam extends Component{
         console.log("form submitted", data);
  
         
-         axios.post('http://localhost:5000/api/stack1', parse(data))
+         axios.post('/api/stack1', parse(data))
              .then(response => console.log(response.data))
              .catch(() => console.log('Error creating new course'))
  
@@ -84,7 +80,7 @@ class exam extends Component{
        console.log("form submitted", data);
 
        
-        axios.post('http://localhost:5000/api/stack', parse(data))
+        axios.post('/api/stack', parse(data))
             .then(response => console.log(response.data))
             .catch(() => console.log('Error creating new course'))
 
@@ -121,7 +117,7 @@ class exam extends Component{
         .catch(() => console.log('Error creating new course'));
         console.log("Questions",this.state.input1);
         axios.post("/api/submit2",{questions:this.state.input1}).then(response=>console.log(response)).catch(()=>console.log('Error creating questions'))
-        this.delete 
+
     }   
     questions=(evt)=>{
         
@@ -139,6 +135,8 @@ class exam extends Component{
       
     renderContent() {
         console.log(this.style)
+        this.call3()
+
         switch (this.props.auth) {
             case null:
                 return <Body />;
@@ -151,8 +149,8 @@ class exam extends Component{
                     <div className="container2">
                     <nav class="navig2">
                     <ul>
-                        <li><a href="/"><img src={image}></img></a></li>
-                        <li ><a href="/" class="l1">Home</a></li>
+                        <li><a href="http://localhost:3000"><img src={image}></img></a></li>
+                        <li ><a href="http://localhost:3000" class="l1">Home</a></li>
                         <li ><a href="/api/logout"class="l2">Logout</a></li>
                     
                         
@@ -208,6 +206,3 @@ function mapStateToProps({ auth }) {
     return { auth };
   }
 export default connect( mapStateToProps)(exam);
-export const file_name=()=> {
-    return a;
-}
