@@ -181,12 +181,12 @@ app.post("/api/submit4",(req,res)=>{
     console.log("This id",googleId);
 })
 app.get("/api/submit3",(req,res)=>{
-    console.log("required name",googleId)
+    console.log(googleId)
     var name1="";
     if(info.googleId!=undefined){
     File.findOne({_id:googleId},(err,user)=>{
         if(user!=null){
-        name1=user.name;
+        
         const params={
             Bucket:"exam-rahul-vemuri-12",
             Key:user.pdf_id
@@ -206,9 +206,11 @@ app.get("/api/submit3",(req,res)=>{
                 res.send({user1:user.name,q:user.questions,url1:url});
          })
         
+        
         }else{
             res.send("no data");
         }
+       
     })
 }
 })
