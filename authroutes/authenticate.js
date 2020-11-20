@@ -50,7 +50,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
        
        res.redirect("/paper");
        }else{
-           
+        app.get('/api/output1', (req, res) => {
+            console.log("wobi")
+            
+            info=req.user;
+            
+            res.send(req.user);
+            
+    
+        });
            res.send("");
        }
         
@@ -66,15 +74,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         
 
     });
-    app.get('/api/output1', (req, res) => {
-        console.log("wobi")
-        
-        info=req.user;
-        
-        res.send(req.user);
-        
-
-    });
+    
     app.get("/api/logout", (req, res) => {
         req.logout();
         app.get('/api/output', (req, res) => {
