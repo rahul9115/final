@@ -31,7 +31,7 @@ const storage=multer.memoryStorage({
   const upload = multer({ storage });
 module.exports = (app) => {
    app.use(fileupload());
-   app.set("view engine","ejs");
+   
    app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));
    app.use(cors());
