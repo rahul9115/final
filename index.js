@@ -30,27 +30,7 @@ app.use(
 
     })
 );
-if (process.env.NODE_ENV == 'production') {
-  
-    
-        app.get("/api/submit4",(req,res)=>{
-            res.send("");
-        })
 
-        app.use(express.static('client1/build'));
-        app.get("/paper",(req,res)=>{
-            res.sendFile(path.resolve(__dirname,"client1/build/index.html"))
-        })
-        app.get("/login",(req,res)=>{
-            res.sendFile(path.resolve(__dirname,"client1/build/index.html"))
-        })
-        app.get("/exam",(req,res)=>{
-            res.sendFile(path.resolve(__dirname,"client1/build/index.html"))
-        })
-        
-  
-  
-}     
 app.use(passport.initialize());
 app.use(passport.session())
 authroutes(app);
