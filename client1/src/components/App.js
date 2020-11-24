@@ -24,7 +24,7 @@ class App extends Component{
                     <Route exact path='/login' style={css} component={login}/>
                     <Route exact path='/exam' style={css} component={exam}/>
                     <Route exact path='/paper' style={css} component={paper}/>
-                                    </BrowserRouter>
+                    </BrowserRouter>
 
             </div>
         );

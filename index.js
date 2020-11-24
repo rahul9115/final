@@ -1,6 +1,6 @@
 const express=require("express");
 const app=express();
-const PORT=process.env.PORT || 5000;
+const PORT=process.env.PORT;
 
 const passport=require("passport");
 const key=require("./keys/key");
@@ -9,6 +9,7 @@ const authroutes=require("./authroutes/authenticate");
 const cookieSession = require("cookie-session");
 var cors = require('cors');
 const mongoose=require("mongoose");
+const path = require("path");
 mongoose.connect("mongodb+srv://rahul:rahul@cluster0.rpfjy.mongodb.net/<dbname>?retryWrites=true&w=majority");
 require('./models/User');
 
@@ -30,9 +31,31 @@ app.use(
     })
 );
 if (process.env.NODE_ENV == 'production') {
+<<<<<<< HEAD
     app.use(express.static('client1/build'));
     
     
+=======
+  
+    
+        app.get("/api/submit4",(req,res)=>{
+            res.send("");
+        })
+
+        app.use(express.static('client1/build'));
+        app.get("/paper",(req,res)=>{
+            res.sendFile(path.resolve(__dirname,"client1/build/index.html"))
+        })
+        app.get("/login",(req,res)=>{
+            res.sendFile(path.resolve(__dirname,"client1/build/index.html"))
+        })
+        app.get("/exam",(req,res)=>{
+            res.sendFile(path.resolve(__dirname,"client1/build/index.html"))
+        })
+        
+  
+  
+>>>>>>> a8e2c8c4e42673e6462d5101657730e8965b3f55
 }     
 app.use(passport.initialize());
 app.use(passport.session())

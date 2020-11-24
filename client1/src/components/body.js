@@ -5,6 +5,7 @@ import Header1 from "./css/Header.css";
 import {connect} from "react-redux";
 import image from "./images/log.png";
 import * as actions from "../actions";
+import axios from "axios";
 class Body extends Component{
     
     constructor(props){
@@ -32,6 +33,9 @@ class Body extends Component{
         style1:{backgroundColor:"white",color:"black"},
         profile:"teacher"});
     }
+    call(){
+        axios({url:"/api/state",method:"POST",data:this.state})
+    }
     render(){
         console.log(this.props)
         return(
@@ -48,7 +52,7 @@ class Body extends Component{
                   <a href="#" class="student" onClick={this.updateStudent} style={this.state.style}>Student</a>
                   <a href="#" class="teacher" onClick={this.updateTeacher} style={this.state.style1}>Teacher</a>
                   <a href="#" className="login">{this.state.element}</a>
-                  {this.props.handleToken(this.state)}
+                  {this.call()}
                   </div> 
            
             </div>

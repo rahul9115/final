@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import css from "./css/paper.css";
 import image from "./images/log.png";
 import Body from "./body";
-import RGF from 'react-google-forms';
+
 
 import file_name from "./exam";
 import exam from "./exam";
@@ -21,17 +21,21 @@ var a2=[];
 var q=" ";
 var a3=[];
 var j=0;
+var value=[];
+var m=0;
 class paper extends Component{
     constructor(props){
         super(props);
         this.state={
-            input:null
+            input:null,
+            value
         }
     }
     call(){
         
         axios.get("/api/submit3").then(res=>{
-            a.push(res.data.user1);
+            a.push(res.data.url1);
+            console.log(res.data.url1)
             a3.push(res.data.q); 
             
         });
@@ -48,6 +52,15 @@ class paper extends Component{
         console.log(a3)
         return a3;
       
+    }
+    async call3(){
+        
+        const res=await axios.get("/api/output1");
+       
+         value.push(res.data._id);
+         m=res.data._id;
+         console.log(m);
+         return m;
     }
     options(){
         
@@ -99,10 +112,18 @@ class paper extends Component{
     renderContent() {
        var str=this.call();
        var a2=this.call1();
-       console.log(a2[0],str[0])
+       console.log(a[0])
+       var str4='"'+a[0]+'"';
+       console.log(str);
+       console.log(m)
+       var m1=[]
+       this.call3().then(data=>{
+        this.state.value=data
+    });
+    
        
-        switch (this.props.auth) {
-            case null:
+        switch (this.state.value) {
+            case undefined:
                 return <Body />;
             case false:
                 return <Body />;
@@ -143,7 +164,9 @@ class paper extends Component{
 
 
         }
+    
     }
+
     render(){
         console.log(this.props.auth);
         return(

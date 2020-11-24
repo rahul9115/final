@@ -4,11 +4,20 @@ import {connect} from "react-redux";
 import css from "./css/login.css";
 import image from "./images/log.png";
 import Body from "./body";
-
+import axios from "axios";
+var value=false;
 class login extends Component{
+    call3(){
+        axios.get("/api/output").then(res=>{
+            if(res.data){
+                value=true;
+            }
+             
+         });
+    }
     renderContent() {
-        
-        switch (this.props.auth) {
+        this.call3()
+        switch (value) {
             case null:
                 return <Body />;
             case false:
@@ -20,8 +29,8 @@ class login extends Component{
                   <div >
                     <nav class="navig1">
                     <ul>
-                        <li><a href="http://localhost:3000"><img src={image}></img></a></li>
-                        <li ><a href="http://localhost:3000" class="l1">Home</a></li>
+                        <li><a href="/"><img src={image}></img></a></li>
+                        <li ><a href="/" class="l1">Home</a></li>
                         <li ><a href="/api/logout"class="l2">Logout</a></li>
                     
                         
