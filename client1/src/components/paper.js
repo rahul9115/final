@@ -71,6 +71,13 @@ class paper extends Component{
       
         
     }
+    check=(evt)=>{
+        this.setState({
+            selected:evt.target.value,
+            selectedname:evt.target.name
+        })
+        axios({url:"/api/answers",method:"POST",headers:{authorization:"your token"},data:{q_no:this.state.selectedname,answer:this.state.selected}}).then(response => console.log(response))
+    }
    option1(){
   
     

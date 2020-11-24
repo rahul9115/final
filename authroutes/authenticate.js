@@ -118,6 +118,9 @@ app.post("/api/submit3",(req,res)=>{
     googleId=req.body.id;
     console.log("This id",googleId);
 })
+app.post("/api/answers",(req,res)=>{
+    console.log(req.body);
+})  
 app.get("/api/submit3",(req,res)=>{
     console.log(googleId)
     var name1="";
