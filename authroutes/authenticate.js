@@ -116,6 +116,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
         questions);
         
     })
+    app.post("/api/answers",(req,res)=>{
+        console.log(req.body);
+    })  
     app.post('/api/submit',(req,res)=>{
         
         
