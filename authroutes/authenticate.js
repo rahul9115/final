@@ -176,7 +176,7 @@ app.post("/api/submit4",(req,res)=>{
 app.get("/api/submit3",(req,res)=>{
     console.log(googleId)
     var name1="";
-    if(googleId!=undefined){
+    if(info.googleId!=undefined){
     File.findOne({_id:googleId},(err,user)=>{
         if(user!=null){
         
