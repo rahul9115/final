@@ -57,20 +57,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
         res.redirect("/login");
     }
        else{
-        app.get('/api/output1', (req, res) => {
-            console.log("wolabbi")
-            
-            info=req.user;
-            
-            res.send(req.user);
-            
         
-        });  
     res.redirect("/paper");
     }
 
  });
- 
+ app.get('/api/output1', (req, res) => {
+    console.log("wolabbi")
+    
+    info=req.user;
+    
+    res.send(req.user);
+    
+
+});  
  app.get('/api/output', (req, res) => {
     console.log("wolabbi")
     
