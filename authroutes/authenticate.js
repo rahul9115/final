@@ -127,7 +127,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         teacher_answers=req.body;
     });
     app.post("/api/answers",(req,res)=>{
-        console.log(req.body)
+        console.log("answers",req.body)
         student_answers=req.body
     })  
     

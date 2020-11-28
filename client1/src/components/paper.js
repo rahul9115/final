@@ -86,6 +86,7 @@ class paper extends Component{
             }
         }
         answer.push({q_no:evt.target.name,answer:evt.target.value})
+        console.log(answer)
        
     }
    option1(){
