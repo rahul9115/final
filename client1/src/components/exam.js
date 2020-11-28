@@ -15,6 +15,8 @@ var value=false;
 var m=0;
 var answers=[];
 var i=0;
+var q_no=[];
+var a1=[];
 class exam extends Component{
         
     constructor(props){
