@@ -86,7 +86,7 @@ class paper extends Component{
             }
         }
         answer.push({q_no:evt.target.name,answer:evt.target.value})
-        console.log(answer)
+        console.log("This is react answers",answer)
        
     }
    option1(){
@@ -143,7 +143,7 @@ class paper extends Component{
                     <input placeholder="Enter the Id" onChange={evt=>this.id(evt)}></input>
                     <a href="/api/submit3">Begin Exam</a>
                     
-                    <a href="/api/score"  onClick={this.answers}>Submit Exam</a>
+                    <a  onClick={this.answers}>Submit Exam</a>
                     <a href="/api/logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
                   
                     </div>
