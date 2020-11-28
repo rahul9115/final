@@ -139,7 +139,7 @@ class paper extends Component{
     });
     console.log(this.state.value,a[0],a3[0])
        
-        switch (this.props.auth) {
+        switch (this.state.value) {
             case null:
                 return ;
             case false:
