@@ -230,7 +230,7 @@ app.post("/api/submit3",(req,res)=>{
 
 
 app.get("/api/submit3",(req,res)=>{
-    res.send(object);
+    res.send(object1);
 })
     
 
