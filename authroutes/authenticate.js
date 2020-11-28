@@ -249,7 +249,7 @@ app.get("/api/submit3",(req,res)=>{
         }
         answer.findOne({_id:info.googleId,pdf_id:googleId}).then((user)=>{
             if(user){
-                alert("You have already submitted")
+                res.send("Sorry you have already given the test");
             }else{
                 new answer({_id:info.googleId,email:info.email[0].value,pdf_id:googleId,student_score:score}).save();
             }
