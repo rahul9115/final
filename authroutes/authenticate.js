@@ -239,7 +239,7 @@ var score=0;
         
     
     app.get("/api/score",(req,res)=>{
-        console.log("teacher",teacher_answers1,student_answers);
+        console.log("student",teacher_answers1,student_answers);
         for(var i=0;i<teacher_answers1.length;i++){
             for(var j=0;j<student_answers.length;j++){
                 if(teacher_answers1[i].q_no==student_answers[j].q_no){
