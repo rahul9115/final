@@ -92,30 +92,8 @@ class exam extends Component{
             
         
     }
-    onsubmit1=(data) =>{
-       
-
-        console.log("form submitted", data);
- 
-        
-         axios.post('/api/stack1', parse(data))
-             .then(response => console.log(response.data))
-             .catch(() => console.log('Error creating new course'))
- 
-         
-     }
-    onsubmit =(data) =>{
-       
-
-       console.log("form submitted", data);
-
-       
-        axios.post('/api/stack', parse(data))
-            .then(response => console.log(response.data))
-            .catch(() => console.log('Error creating new course'))
-
-        
-    }
+   
+   
     delete=()=>{
         this.setState({element:null,style:{display:'none'}});
     }
