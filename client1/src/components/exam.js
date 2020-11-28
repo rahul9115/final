@@ -165,7 +165,7 @@ class exam extends Component{
         console.log("Questions",this.state.input1);
         axios.post("/api/submit2",{questions:this.state.input1}).then(response=>console.log(response)).catch(()=>console.log('Error creating questions'))
         axios.post("/api/submit5",answers).then(response=>console.log(response)).catch(()=>console.log('Error creating questions'))
-        this.delete
+        
     }   
     questions=(evt)=>{
         
