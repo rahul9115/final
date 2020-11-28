@@ -5,18 +5,12 @@ import {connect} from "react-redux";
 import css from "./css/exam.css";
 import image from "./images/log.png";
 import Body from "./body";
-import RGF from 'react-google-forms';
-
-import parse from "html-react-parser";
-
 import axios from "axios";
 var a="";
-var value=false;
-var m=0;
-var answers=[];
-var i=0;
 var q_no=[];
 var a1=[];
+var i=0;
+var answers=[];
 class exam extends Component{
         
     constructor(props){
@@ -28,31 +22,21 @@ class exam extends Component{
             data:'<p>React is really <em>nice</em>!</p>',
             data1:'<p>React is really <em>nice</em>!</p>',
             input:null,
-            input1:null,
-            value:null
+            input1:null
             
             
         }
         
         
     }
-    async call3(){
-        
-        const res=await axios.get("/api/output");
-       
-         value.push(res.data._id);
-         m=res.data._id;
-         console.log(m);
-         return m;
-    }
+   
     show=()=>{
         this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="ques" onClick={this.show1}>+ Add question</a></div>,style:{display:'block'}
         })
     }  
     show1=()=>{
         this.setState({element:<div className="modal-content"><a class="close1" href="#" onClick={this.delete1}>&times;</a> <br></br>
-
-            </div>,style:{display:'block'}})
+        </div>,style:{display:'block'}})
             
         
     }
@@ -101,10 +85,9 @@ class exam extends Component{
         
         <h1>Enter the answers</h1>
 
+        
             {this.option1()}
-            
             <button onClick={this.pdf} className="ok">Ok</button>
-
             </div>,style:{display:'block'}})
             
         
@@ -140,7 +123,10 @@ class exam extends Component{
         this.show()
     }
     pdf=()=>{
-        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><a className="options" onClick={this.show2}>+ Add options and answers</a><input className="pdf" type="file" placeholder="Add pdf" required  onChange={evt => this.updateInputValue(evt)}></input><input type="number" className="pdf2" placeholder="Enter the number questions" onChange={evt=>this.questions(evt)} required></input> <button onClick={this.onFileChange} className="ok1">Ok</button></div>,style:{display:'block'}})
+        this.setState({element:<div className="modal-content"><a class="close" href="#" onClick={this.delete}>&times;</a><input className="pdf" type="file" placeholder="Add pdf" required  onChange={evt => this.updateInputValue(evt)}></input><input type="number" className="pdf2" placeholder="Enter the number questions" onChange={evt=>this.questions(evt)} required></input><a className="options" onClick={this.show2}>+ Add answers</a> <button onClick={this.onFileChange} className="ok1">Ok</button></div>,style:{display:'block'}})
+    }
+    show3=()=>{
+        this.setState({element:<a className="options" onClick={this.show2}>+ Add answers</a>,style:{display:'block'}});
     }
     delete2=()=>{
         this.pdf()
@@ -155,7 +141,7 @@ class exam extends Component{
     
     onFileChange=()=>{
       
-        
+        console.log(this.state.input)  
         const formData = new FormData();
         formData.append('file', this.state.input);
           a=this.state.input;
@@ -165,13 +151,14 @@ class exam extends Component{
         console.log("Questions",this.state.input1);
         axios.post("/api/submit2",{questions:this.state.input1}).then(response=>console.log(response)).catch(()=>console.log('Error creating questions'))
         axios.post("/api/submit5",answers).then(response=>console.log(response)).catch(()=>console.log('Error creating questions'))
-        
+        this.delete 
     }   
     questions=(evt)=>{
         
         this.setState({
             input1: evt.target.value
           });
+          
     }    
     
    
@@ -182,10 +169,7 @@ class exam extends Component{
 
       
     renderContent() {
-        this.call3().then(data=>{
-            this.state.value=data
-        });
-
+        console.log(this.style)
         switch (this.props.auth) {
             case null:
                 return <Body />;
@@ -255,3 +239,6 @@ function mapStateToProps({ auth }) {
     return { auth };
   }
 export default connect( mapStateToProps)(exam);
+export const file_name=()=> {
+    return a;
+}
