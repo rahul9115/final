@@ -228,7 +228,7 @@ app.get("/api/submit3",(req,res)=>{
 }
 })
 
-var score=0;
+
 
  
     
@@ -236,6 +236,7 @@ var score=0;
         
     
     app.get("/api/score",(req,res)=>{
+        var score=0;
         console.log("teacher",teacher_answers1,student_answers);
         for(var i=0;i<teacher_answers1.length;i++){
             for(var j=0;j<student_answers.length;j++){
