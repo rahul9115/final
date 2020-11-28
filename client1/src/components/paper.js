@@ -96,7 +96,7 @@ class paper extends Component{
    
    
     for (var i=1;i<=a3[0];i++)
-    a1[i]=this.options();
+    a1[i]=this.options(i);
   return  a1;  
    }
    id=(evt)=>{
