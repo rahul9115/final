@@ -208,7 +208,7 @@ app.post("/api/submit3",(req,res)=>{
                     else
                         url=url+data[i];    
                 }
-                var object1={user1:user.name,q:user.questions,url1:url};
+                object1={user1:user.name,q:user.questions,url1:url};
          })
         teacher_answers1=user.answers; 
         console.log("teacher",teacher_answers1)
