@@ -64,7 +64,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         });   
         res.redirect("/login");
     }
-       else{
+       if (a=="student"){
         app.get('/api/output1', (req, res) => {
             console.log("wolabbi")
             

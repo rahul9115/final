@@ -54,8 +54,8 @@ class Body extends Component{
               <div className="choice">
                   <a href="#" class="student" onClick={this.updateStudent} style={this.state.style}>Student</a>
                   <a href="#" class="teacher" onClick={this.updateTeacher} style={this.state.style1}>Teacher</a>
-                  <a href="#" className="login">{this.state.element}</a>
-                  {this.call()}
+                  <a href="#" onClick={this.call()} className="login">{this.state.element}</a>
+                  
                   </div> 
            
             </div>
