@@ -251,7 +251,7 @@ app.get("/api/submit3",(req,res)=>{
             if(user){
                 res.send("Sorry you have already given the test");
             }else{
-                new answer({_id:info.googleId,email:info.email[0].value,pdf_id:googleId,student_score:score}).save().then(()=>{
+                new answer({_id:info.googleId,email:info.email[0].value,pdf_id:googleId,student_score:score,answers:student_answers}).save().then(()=>{
                     res.send("Thank you for giving the test");
                 });
             }
