@@ -6,7 +6,7 @@ var FileManager = require('file-storage');
 require('../models/file')
 require('../models/student')
 require('../models/answer')
-
+var object={};
 const mongoose=require('mongoose');
 const { Binary } = require('mongodb');
 const File=mongoose.model('files');
@@ -25,8 +25,8 @@ const mongouri="mongodb+srv://rahul:rahul@cluster0.rpfjy.mongodb.net/<dbname>?re
 const conn =mongoose.createConnection(mongouri);
 var id="";
 const s3=new AWS.S3({
-    accessKeyId:"AKIAJA6OIEW5BCTHPWKA",
-    secretAccessKey:"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",
+    accessKeyId:process.env.AWS_ID,
+    secretAccessKey:process.env.AWS_SECRET
 })
 
 const storage=multer.memoryStorage({
@@ -177,13 +177,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 })
 var googleId="";
 
-app.post("/api/submit4",(req,res)=>{
-    googleId=req.body.id;
-    console.log("This id",googleId);
-})
+
 
 var teacher_answers1=[];
-app.get("/api/submit3",(req,res)=>{
+app.post("/api/submit3",(req,res)=>{
+    googleId=req.body.id;
+    console.log("This id",googleId);
     console.log(googleId)
     var name1="";
     if(info.googleId!=undefined){
@@ -209,7 +208,7 @@ app.get("/api/submit3",(req,res)=>{
                     else
                         url=url+data[i];    
                 }
-                res.send({user1:user.name,q:user.questions,url1:url});
+                var object={user1:user.name,q:user.questions,url1:url};
          })
         teacher_answers1=user.answers; 
         console.log("teacher",teacher_answers1)
@@ -230,7 +229,9 @@ app.get("/api/submit3",(req,res)=>{
 
 
 
- 
+app.get("/api/submit3",(req,res)=>{
+    res.send(object);
+})
     
 
         
