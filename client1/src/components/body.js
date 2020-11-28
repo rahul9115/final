@@ -14,7 +14,7 @@ class Body extends Component{
     constructor(props){
         super(props);
         this.state={
-            element:<a href="/auth/google" onClick={this.call()} style={{textDecoration:"none",color:"white"}} className="tech"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
+            element:<a href="/auth/google" style={{textDecoration:"none",color:"white"}} className="tech"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
             style:{backgroundColor:"white",color:"black"},
             style1:{backgroundColor:"navy",color:"white"},
             profile:"student"
@@ -23,7 +23,7 @@ class Body extends Component{
    
     updateStudent=()=>{
         console.log("in student");
-        this.setState({element:<a href="/auth/google" onClick={this.call()} className="teah"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
+        this.setState({element:<a href="/auth/google" className="teah"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
         style:{backgroundColor:"white",color:"black"},
         style1:{backgroundColor:"navy",color:"white"},
         profile:"student"});
@@ -31,7 +31,7 @@ class Body extends Component{
     updateTeacher=()=>{
         console.log("in teacher");
         console.log("in student");
-        this.setState({element:<a href="/auth/google" onClick={this.call()} className="teah"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
+        this.setState({element:<a href="/auth/google"  className="teah"><i class="fa fa-google" aria-hidden="true"></i> Sign in with Google</a>,
         style:{backgroundColor:"navy",color:"white"},
         style1:{backgroundColor:"white",color:"black"},
         profile:"teacher"});
@@ -55,7 +55,7 @@ class Body extends Component{
                   <a href="#" class="student" onClick={this.updateStudent} style={this.state.style}>Student</a>
                   <a href="#" class="teacher" onClick={this.updateTeacher} style={this.state.style1}>Teacher</a>
                   <a href="#" className="login">{this.state.element}</a>
-                  
+                  {this.call()}
                   </div> 
            
             </div>
