@@ -249,6 +249,7 @@ var score=0;
                 }
             }
         }
+        console.log(score)
         answer.findOne({_id:info.googleId,pdf_id:googleId}).then((user)=>{
             if(user){
                 alert("You have already submitted")
