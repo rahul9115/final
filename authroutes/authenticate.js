@@ -6,6 +6,7 @@ var FileManager = require('file-storage');
 require('../models/file')
 require('../models/student')
 require('../models/answer')
+
 const mongoose=require('mongoose');
 const { Binary } = require('mongodb');
 const File=mongoose.model('files');
@@ -19,12 +20,13 @@ var axios=require("axios");
 const AWS=require('aws-sdk');
 const crypto=require("crypto");
 const multer=require("multer");
+const { CostExplorer } = require('aws-sdk');
 const mongouri="mongodb+srv://rahul:rahul@cluster0.rpfjy.mongodb.net/<dbname>?retryWrites=true&w=majority";
 const conn =mongoose.createConnection(mongouri);
 var id="";
 const s3=new AWS.S3({
-    accessKeyId:"AKIAIZYMGI7KB3NME3MQ",
-    secretAccessKey:"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"
+    accessKeyId:"AKIAJA6OIEW5BCTHPWKA",
+    secretAccessKey:"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",
 })
 
 const storage=multer.memoryStorage({
@@ -43,24 +45,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
     app.get('/auth/google', passport.authenticate('google', {
         scope: ['email', 'profile']
     }));
-    app.post("/api/state",(req,res)=>{
-        console.log("This",req.body.profile);
-        a=req.body.profile;
-    })
+   
     app.get('/auth/google/callback', passport.authenticate('google'),(req,res)=>{
-        
+        app.post("/api/state",(req,res)=>{
+            console.log("This",req.body.profile);
+            a=req.body.profile;
+        })
        if (a=="teacher"){
        
-        app.get('/api/output', (req, res) => {
-            console.log("wolabbi")
-            
-            info=req.user;
-            
-            res.send(req.user);
-            
-        
-        });   
-         
+       
         res.redirect("/login");
     }
        else{
@@ -78,6 +71,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
  });
  
+ app.get('/api/output', (req, res) => {
+    console.log("wolabbi")
+    
+    info=req.user;
+    
+    res.send(req.user);
+    
+
+});   
  
     app.get("/api/logout", (req, res) => {
         req.logout();
@@ -88,9 +90,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     });
     var info="";
     
-    app.post("/api/answers",(req,res)=>{
-        console.log(req.body);
-    })  
+   
        
     app.post('/api/stack',(req,res)=>{
         var answers=req.body;
@@ -127,7 +127,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         teacher_answers=req.body;
     });
     app.post("/api/answers",(req,res)=>{
-        console.log("this is wonderful",req.body)
+        console.log(req.body)
         student_answers=req.body
     })  
     
@@ -148,7 +148,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         }
         s3.upload(params,(error,data)=>{
                 if(error){
-                    res.status(500).send(error);
+                    console.log(error)
                 }
                 res.status(200).send(data);
         })
@@ -169,22 +169,20 @@ app.use(bodyParser.urlencoded({ extended: true }));
           
         })
        
-          file.mv(`C:/Users/sudha/Downloads/exam4/client/public/uploads/${file.name}`,err=>{
-            if(err){
-                console.log(err);
-                return res.status(500).send(err);
-            }
-        });
+          
       
       
         
 
 })
 var googleId="";
+
 app.post("/api/submit4",(req,res)=>{
     googleId=req.body.id;
     console.log("This id",googleId);
 })
+
+var teacher_answers1=[];
 app.get("/api/submit3",(req,res)=>{
     console.log(googleId)
     var name1="";
@@ -230,7 +228,6 @@ app.get("/api/submit3",(req,res)=>{
 }
 })
 
-
 var score=0;
 
  
@@ -239,7 +236,7 @@ var score=0;
         
     
     app.get("/api/score",(req,res)=>{
-        console.log("student",teacher_answers1,student_answers);
+        console.log("teacher",teacher_answers1,student_answers);
         for(var i=0;i<teacher_answers1.length;i++){
             for(var j=0;j<student_answers.length;j++){
                 if(teacher_answers1[i].q_no==student_answers[j].q_no){
@@ -249,7 +246,6 @@ var score=0;
                 }
             }
         }
-        console.log(score)
         answer.findOne({_id:info.googleId,pdf_id:googleId}).then((user)=>{
             if(user){
                 alert("You have already submitted")
@@ -259,6 +255,7 @@ var score=0;
         })
       
 })
+
 
 }
     
