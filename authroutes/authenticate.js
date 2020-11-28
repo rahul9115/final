@@ -6,7 +6,7 @@ var FileManager = require('file-storage');
 require('../models/file')
 require('../models/student')
 require('../models/answer')
-var object={};
+var object1={};
 const mongoose=require('mongoose');
 const { Binary } = require('mongodb');
 const File=mongoose.model('files');
@@ -208,7 +208,7 @@ app.post("/api/submit3",(req,res)=>{
                     else
                         url=url+data[i];    
                 }
-                var object={user1:user.name,q:user.questions,url1:url};
+                var object1={user1:user.name,q:user.questions,url1:url};
          })
         teacher_answers1=user.answers; 
         console.log("teacher",teacher_answers1)
