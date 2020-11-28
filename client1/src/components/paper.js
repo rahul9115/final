@@ -107,6 +107,7 @@ class paper extends Component{
        .then(response => console.log(response))
    }
    answers=()=>{
+       console.log("Inside the answers section");
     axios({url:'/api/answers', method:"POST",headers:{authorization:"your token"},data:answer}).then(response => console.log(response))
    }
     renderContent() {
