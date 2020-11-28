@@ -53,15 +53,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
         })
        if (a=="teacher"){
        
-        app.get('/api/output', (req, res) => {
-            console.log("wolabbi")
-            
-            info=req.user;
-            
-            res.send(req.user);
-            
-        
-        });   
+       
         res.redirect("/login");
     }
        if (a=="student"){
@@ -78,7 +70,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
     }
 
  });
- 
+ app.get('/api/output', (req, res) => {
+    console.log("wolabbi")
+    
+    info=req.user;
+    
+    res.send(req.user);
+    
+
+});   
  
  
     app.get("/api/logout", (req, res) => {
