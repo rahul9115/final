@@ -4,9 +4,13 @@ const fileupload=require('express-fileupload');
 const fs=require('fs');
 var FileManager = require('file-storage');
 require('../models/file')
+require('../models/student')
+require('../models/answer')
 const mongoose=require('mongoose');
 const { Binary } = require('mongodb');
 const File=mongoose.model('files');
+const student=mongoose.model('student');
+const answer=mongoose.model('answers');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -116,9 +120,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
         questions);
         
     })
+    var teacher_answers=[];
+    var student_answers=[];
+    app.post("/api/submit5",(req,res)=>{
+        console.log(req.body)
+        teacher_answers=req.body;
+    });
     app.post("/api/answers",(req,res)=>{
-        console.log(req.body);
+        console.log(req.body)
+        student_answers=req.body
     })  
+    
     app.post('/api/submit',(req,res)=>{
         
         
@@ -151,7 +163,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
             }
             if(info.googleId){
                 console.log("wolab",{googleId:info.googleId,email:info.email[0].value,name:file.name,files:file});
-                new File({_id:info.googleId,email:info.email[0].value,name:file.name,files:file,questions:q.questions,pdf_id:id}).save();
+                new File({_id:info.googleId,email:info.email[0].value,name:file.name,files:file,questions:q.questions,pdf_id:id,answers:teacher_answers}).save();
             }
             
           
@@ -175,18 +187,21 @@ app.post("/api/submit4",(req,res)=>{
 })
 app.get("/api/submit3",(req,res)=>{
     console.log(googleId)
-    
+    var name1="";
     if(info.googleId!=undefined){
-    File.findOne({_id:googleId},(err,user)=>{
+    File.findOne({pdf_id:googleId},(err,user)=>{
         if(user!=null){
-        
-        const params={
-            Bucket:"exam-rahul-vemuri-12",
-            Key:user.pdf_id
-                          
-    }
-       
-        s3.getSignedUrl('putObject',params,(err,data)=>{
+        student.findOne({pdf_id:googleId,_id:info.googleId}).then((existingUser)=>{
+            console.log(existingUser);
+           
+                console.log("in")
+                new student({_id:info.googleId,email:info.email[0].value,pdf_id:googleId}).save();
+                const params={
+                    Bucket:"exam-rahul-vemuri-12",
+                    Key:user.pdf_id
+                                  
+            }   
+            s3.getSignedUrl('putObject',params,(err,data)=>{
             
                 console.log("krishna",data);
                 var url="";
@@ -198,6 +213,13 @@ app.get("/api/submit3",(req,res)=>{
                 }
                 res.send({user1:user.name,q:user.questions,url1:url});
          })
+        teacher_answers1=user.answers; 
+        console.log("teacher",teacher_answers1)
+           
+        })
+        
+        
+       
         
         
         }else{
@@ -209,7 +231,33 @@ app.get("/api/submit3",(req,res)=>{
 })
 
 
+var score=0;
 
+ 
+    
+
+        
+    
+    app.get("/api/score",(req,res)=>{
+        console.log("teacher",teacher_answers1,student_answers);
+        for(var i=0;i<teacher_answers1.length;i++){
+            for(var j=0;j<student_answers.length;j++){
+                if(teacher_answers1[i].q_no==student_answers[j].q_no){
+                    console.log(teacher_answers1[i].q_no,student_answers[i].q_no)
+                    if(teacher_answers1[i].answer==student_answers[j].answer)
+                        score=score+1;
+                }
+            }
+        }
+        answer.findOne({_id:info.googleId,pdf_id:googleId}).then((user)=>{
+            if(user){
+                alert("You have already submitted")
+            }else{
+                new answer({_id:info.googleId,email:info.email[0].value,pdf_id:googleId,student_score:score}).save();
+            }
+        })
+      
+})
 
 }
     
