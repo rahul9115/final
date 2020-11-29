@@ -1,4 +1,3 @@
-
 .navig{
     position: absolute;
     top:0;
@@ -74,22 +73,37 @@ li .l2{
 
 }
 .student{
+    
     position: absolute;
-    padding-left:20%;
-    padding-right: 15%;
-    padding-top: 3%;
-    font-size: 30px;
-    color: black;
+    transform: translate(-50%,50%);
+    width:10%;
+    height:10%;
+    margin-left:25%;
+
+    top:-9%;
+    
+    padding-right: 23%;
+    padding-left: 17%;
+    padding-top: 20px;
+    padding-bottom: 10px;
     text-decoration: none;
+    font-size: 30px;
+    
 }
-.teacher{
+.choice .teacher{
     position: absolute;
-    margin-left: 50%;
-    padding-top: 3%;
-    font-size: 30px;
-    padding-left: 16.7%;
-    padding-right: 18%;
+    transform: translate(-50%,50%);
+    width:10%;
+    height: 10%;
+    top:-9%;
+    margin-left:75%;
     text-decoration: none;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-right: 21%;
+    padding-left: 19%;
+    font-size: 30px;
+
     
 }
 .login{
@@ -107,110 +121,28 @@ li .l2{
     text-decoration: none;
 }
 
-@media screen and (max-width:100px) {
-    .student{
-        position: absolute;
-        padding-left:20%;
-        padding-right: 20%;
-        padding-top: 3%;
-        font-size: 5px;
-        color: black;
-        text-decoration: none;
-    }
-    .teacher{
-        position: absolute;
-        margin-left: 50%;
-        padding-top: 3%;
-        font-size: 5px;    
-        padding-left: 17.6%;    
-        padding-right: 18%;
-        text-decoration: none;
-        
-    }
-    .login{
-        position: absolute;
-        top:45%;
-        left:30%;
-        font-size: 4px;
-        text-decoration: none;
-        padding: 2px;
-        background-color: navy;
-        color: white;
-        
-        
-    }
-    
-    .navig{
-        position: absolute;
-        top:0;
-        left:0;
-        margin: 0;
-        width:100%;
-        height:20%;
-        
-        box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
-    
-    }
-    li{
-    
-        position: relative;
-        display: inline;
-    
-    }
-    li a img{
-        position: relative;
-        float: left;
-        width: 30px;
-        border-radius: 50%;
-        margin: 0;
-        margin-top: 3px;
-        margin-left: -35px;
-        
-        
-    }
-    #l1{
-        position: absolute;
-        
-        text-decoration: none;
-        color: white;
-        
-        
-        top:10px;
-        font-size: 7px;
-        
-        margin-left:150px;
-    }
-    #l2{
-        position: absolute;
-        text-decoration: none;
-        top: -40px;
-        color: white;
-        font-size: 7px;
-        
-        margin-left: 128px;
-    }
-    
-       
-}
+
 
 @media screen and (max-width:992px) {
     .student{
         position: absolute;
         padding-left:20%;
-        padding-right: 20%;
-        padding-top: 3%;
+        width:1%;
+        height:1%;
+       top:0;
         font-size: 5px;
         color: black;
         text-decoration: none;
     }
     .teacher{
         position: absolute;
+        width:1%;
+        height:1%;
         margin-left: 50%;
-        padding-top: 3%;
-        font-size: 5px;    
-        padding-left: 3.83em;    
-        padding-right: 18%;
-        text-decoration: none;
+        top:-10%;
+        font-size: 5px;
+        color:black;
+        
         
     }
     .login{
