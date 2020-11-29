@@ -47,8 +47,7 @@ class Body extends Component{
                 <nav class="navig">
                 <ul>
                     <li><a href="/"><img src={image}></img></a></li>
-                    <li ><a href="#" class="l1">Home</a></li>
-                    <li ><a href="#"class="l2">About</a></li>
+                   
                 </ul>
                 </nav>
               <div className="choice">
