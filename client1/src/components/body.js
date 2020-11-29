@@ -1,7 +1,7 @@
 import React,{Component} from "react";
 import {Route,BrowserRouter} from "react-router-dom";
 import css from "./css/body.css"
-import Header1 from "./css/Header.css";
+
 import {connect} from "react-redux";
 import image from "./images/log.png";
 import * as actions from "../actions";
