@@ -158,8 +158,7 @@ class paper extends Component{
                   
                     </div>
                     <div className="pdf1">
-                        
-                    <embed src={`${a[0]}`} width="1200px" height="600px" />
+                    <embed src={`/client1/build/media/${str[0]}`} width="1200px" height="600px" />
                   </div>
                    </div>
                 

@@ -31,6 +31,11 @@ app.use(
     })
 );
 if (process.env.NODE_ENV == 'production') {
+<<<<<<< HEAD
+    app.use(express.static('client1/build'));
+    
+    
+=======
   
     
         app.get("/api/submit4",(req,res)=>{
@@ -50,6 +55,7 @@ if (process.env.NODE_ENV == 'production') {
         
   
   
+>>>>>>> a8e2c8c4e42673e6462d5101657730e8965b3f55
 }     
 app.use(passport.initialize());
 app.use(passport.session())
